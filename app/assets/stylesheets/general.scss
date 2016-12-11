@@ -1,0 +1,333 @@
+// Place all the styles related to the Generals controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// ################# GLOBAL STYLES #################
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  height: 100%;
+}
+
+.container {
+  max-width: 1380px;
+  margin: 0 auto;
+}
+
+section {
+  padding: 100px 0px 100px 0px;
+}
+
+.col_third {
+  width: 33.333333%;
+  // border: 1px solid black;
+  float: left;
+}
+
+// ################# COLOR VARIABLES #################
+
+$accent-red: #E21F35;
+$accent-red-hover: #cb162a;
+$headline-color: white;
+$text-color: #90959A;
+$text-color-hover: #666c73;
+
+// ################# FONT VARIABLES #################
+
+$primary-font: 'Exo', sans-serif;
+$secondary-font: 'Open Sans', sans-serif;
+
+
+
+// ################# FONT STYLES #################
+
+h1 {
+  font-size: 3.5em;
+  color: $headline-color;
+  font-family: 'Exo', sans-serif;
+  line-height: 1.2em;
+}
+
+h2 {
+  font-size: 3em;
+  color: $headline-color;
+
+}
+
+h3 {
+  font-size: 1em;
+  color: $accent-red;
+}
+
+h4 {
+
+}
+
+h5 {
+
+}
+
+p {
+  font-size: 1em;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+// ################# HOME PAGE #################
+
+header {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 54% 46%;
+  min-width: 100%;
+  min-height: 100%;
+
+  // .overlay {
+  //   position: absolute;
+  //   top: 0px;
+  //   left: 0px;
+  //   background-color: rgba(0, 0, 0, 0.5);
+  //   height: 100%;
+  //   width: 100%;
+  //   // z-index: 0;
+  // }
+
+  .nav {
+    height: 15%;
+    max-width: 1380px;
+    // background-color: plum;
+    display: flex;
+    margin: 0 auto;
+  }
+
+  .nav_col_1 {
+    width: 20%;
+    // border: 1px solid black;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    img {
+      width: 70%;
+      cursor: pointer;
+    }
+  }
+
+  .nav_col_2 {
+    width: 55%;
+    // border: 1px solid black;
+
+    ul {
+      // background-color: red;
+      margin-top: 30px;
+      text-transform: uppercase;
+    }
+
+    li {
+      // border: 1px solid black;
+      display: inline-block;
+      padding: 25px 15px;
+      color: rgb(210, 210, 210);
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 0.9em;
+      font-family: 'Open Sans', sans-serif;
+
+
+      &:hover {
+        color: white;
+      }
+
+    }
+
+  }
+
+  .nav_col_3 {
+    width: 25%;
+    // border: 1px solid black;
+    text-align: right;
+    padding-right: 20px;
+
+
+    .free_lesson_btn {
+      background-color: $accent-red;
+      padding: 5px 30px;
+      display: inline-block;
+      margin-top: 35px;
+      -webkit-transform: skewX(-5deg);
+      transform: skewX(-5deg);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      color: white;
+
+      &:hover {
+        background-color: $accent-red-hover;
+        transform: scale(1.03);
+      }
+
+    }
+
+  }
+
+  .hero_container {
+    width: 1200px;
+    height: 85vh;
+    margin: 0 auto;
+    // background-color: green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 20px;
+
+    .hero_left {
+      width: 50%;
+      // border: 1px solid black;
+      // padding-right: 11%;
+      margin-top: -100px;
+    }
+
+    h1 {
+      // padding-right: 5%;
+    }
+
+    #hero_p {
+      color: white;
+      padding-right: 20%;
+      margin-top: 10px;
+    }
+
+    .hero_cta {
+      background-color: $accent-red;
+      padding: 5px 25px;
+      display: inline-block;
+      margin-top: 15px;
+      -webkit-transform: skewX(-5deg);
+      transform: skewX(-5deg);
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+      color: white;
+
+      &:hover {
+        background-color: $accent-red-hover;
+        transform: scale(1.03);
+      }
+
+    }
+
+    .hero_right {
+      width: 50%;
+      // border: 1px solid black;
+      padding: 2.5%;
+      margin-top: -100px;
+    }
+
+  }
+
+  .read_more {
+    position: absolute;
+    bottom: 20px;
+    left: calc(50% - 75px);
+    width: 150px;
+    text-align: center;
+    cursor: pointer;
+    transition: 0.3s;
+
+    p {
+      color: rgba(#ffffff, 0.5);
+      text-transform: uppercase;
+      transition: 0.3s;
+      font-size: 0.9em;
+    }
+
+    img {
+      margin-top: -20px;
+      opacity: 0.5;
+      transition: 0.3s;
+      width: 30px;
+    }
+
+    &:hover p {
+      color: rgba(#ffffff, 0.8);
+      transition: 0.3;
+    }
+
+    &:hover img {
+      opacity: 0.8;
+      transition: 0.3;
+    }
+
+
+  }
+
+}
+
+.benefit {
+  min-height: 90vh;
+  width: 100%;
+  text-align: center;
+
+  .col_third {
+    text-align: center;
+    padding: 30px;
+  }
+
+  h2 {
+    color: $text-color;
+    font-family: $primary-font;
+    text-transform: uppercase;
+    transform: rotate(-3deg) skewX(-7deg);
+    font-weight: bolder;
+  }
+
+  .red_highlight {
+    color: $accent-red;
+    text-decoration: underline;
+  }
+
+}
+
+
+
+
+.pass_guarentee {
+  background-color: mistyrose;
+  height: 70vh;
+  width: 100%;
+
+}
+
+.pricing {
+  background-color: plum;
+  height: 80vh;
+  width: 100%;
+
+}
+
+.testimonials {
+  background-color: black;
+  height: 70vh;
+  width: 100%;
+
+}
+
+footer {
+  background-color: lightgrey;
+  height: 50vh;
+  width: 100%;
+  padding: 80px 0px 80px 0px;
+
+}
