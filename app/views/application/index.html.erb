@@ -63,21 +63,22 @@
   <div class="container">
 
     <h2>What we're <span class="red_highlight">about</span></h2>
+    <p class="sub_title">Founded over 35 years ago we have devloped important guiding priciples to ensure every student is confident passing their final test and getting their license.</p>
 
     <div class="col_third">
-      <svg></svg>
-      <h3>Make this an image</h3>
+      <img src="images/placeholder.svg" alt="">
+      <h3>Benefit 1 goes here</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus nihil ipsum ratione recusandae, fugit magni excepturi consequatur nisi totam officia assumenda asperiores fuga</p>
 
     </div>
     <div class="col_third">
-      <svg></svg>
-      <h3>Make this an image</h3>
+      <img src="images/placeholder.svg" alt="">
+      <h3>Benefit 2 goes here</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus nihil ipsum ratione recusandae, fugit magni excepturi consequatur nisi totam officia assumenda asperiores fuga</p>
     </div>
     <div class="col_third">
-      <svg></svg>
-      <h3>Make this an image</h3>
+      <img src="images/placeholder.svg" alt="">
+      <h3>Benefit 3 goes here</h3>
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus nihil ipsum ratione recusandae, fugit magni excepturi consequatur nisi totam officia assumenda asperiores fuga</p>
     </div>
 
@@ -87,10 +88,19 @@
 
 <section class="pass_guarentee">
 
+  <div class="background_angle"></div>
+
   <div class="container">
 
-    <h2>Pass Guarentee</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    <div class="pass_left">
+      <img src="images/placeholder.svg" alt="">
+    </div>
+
+    <div class="pass_right">
+      <h2>Pass Guarentee</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
 
   </div>
 
@@ -111,9 +121,9 @@
 
 <section class="testimonials">
 
-  <div class="container">
+  <div class="container testimonials_container">
 
-    <h2>Testimonails</h2>
+    <h2>Testimonials</h2>
     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel harum eius, quis maxime velit voluptas laudantium non obcaecati quibusdam optio ut natus, voluptatum repellendus. Temporibus beatae labore fugiat, iure commodi.</p>
 
     <!-- slider here -->
@@ -122,6 +132,23 @@
   </div>
 
   <!-- background floating pictures of students -->
+
+</section>
+
+<section class="location">
+
+  <div id="map"></div>
+
+  <div class="legend">
+    <h2>Locations</h2>
+
+    <div class="button_holder">
+      <button class="location_btn" id="btn_melbourne">Melbourne</button>
+      <button class="location_btn" id="btn_sydney">Sydney</button>
+      <button class="location_btn" id="btn_adelaide">Adelaide</button>
+    </div>
+
+  </div>
 
 </section>
 
@@ -156,8 +183,58 @@
     $('html, body').animate({scrollTop: $(".benefit").offset().top}, 1000);
   });
 
-</script>
+  //Map Code
+  mapboxgl.accessToken = 'pk.eyJ1Ijoiam96enphYSIsImEiOiJjaXdubzgwbm0wMmFrMnRwMnBzaHNnczV2In0.Xyl1f3DIqdhLqrGe4-kzkg';
+  var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/light-v9',
+    center: [133.6631636, -28.4421561],
+    zoom: 4
+  });
 
+  map.scrollZoom.disable();
+
+  var cities = {
+
+    'melbourne': {
+      duration: 6000,
+      center: [144.9562538, -37.8205624],
+      pitch: 0,
+      bearing: -20,
+      zoom: 11,
+      pitch: 25
+    },
+    'sydney': {
+      duration: 6000,
+      center: [151.1982344, -33.8775264],
+      bearing: 10,
+      zoom: 11,
+      pitch: 20
+    },
+    'adelaide': {
+      duration: 6000,
+      bearing: 20,
+      center: [138.587808, -34.9351732],
+      zoom: 11,
+      speed: 0.6,
+      pitch: 30
+    },
+  };
+
+  $('#btn_melbourne').on('click', function() {
+    map.flyTo( cities.melbourne );
+  })
+
+  $('#btn_sydney').on('click', function() {
+    map.flyTo( cities.sydney );
+  })
+
+  $('#btn_adelaide').on('click', function() {
+    map.flyTo( cities.adelaide );
+  })
+
+
+</script>
 
 
 <!-- <a href="/subscriptions">
