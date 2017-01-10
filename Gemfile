@@ -27,6 +27,9 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+gem 'font-awesome-sass'
+gem 'pry-rails'
+
 
 
 # Use Capistrano for deployment

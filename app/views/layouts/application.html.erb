@@ -7,8 +7,13 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <link href="https://fonts.googleapis.com/css?family=Exo:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i|Open+Sans:300,300i,400,400i,600,600i,700,700i,800,800i" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700,700i,900,900i" rel="stylesheet">
     <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.js'></script>
     <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.28.0/mapbox-gl.css' rel='stylesheet' />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
+
+
 
     <!-- Facebook Pixel Code -->
     <script>
@@ -25,23 +30,202 @@
     /></noscript>
     <!-- End Facebook Pixel Code -->
 
+
   </head>
 
   <body>
 
+    <div class="lead_modal">
+      <div class="modal_close">
+        <i class="fa fa-3x fa-times" aria-hidden="true"></i>
+      </div>
+      <div class="lead_container">
+        <div class="form_mask">
+
+          <div class="form_stages is_active" id="form_stage_1">
+
+            <h3>|  Introductions.</h3>
+            <h2>Claim your free lesson.</h2>
+            <div class="gif_holder">
+              <img src="" alt="">
+            </div>
+
+            <input type="text" id="name" placeholder="Your name">
+            <input type="email" id="email" placeholder="Your email">
+            <input type="number" id="phone" placeholder="Your phone number">
+            <button id="modal_submit_1">Submit</button>
+
+          </div>
+
+          <div class="form_stages inactive" id="form_stage_2">
+
+            <h3 id="form_introduction"></h3>
+            <h2>Tell us a little more?</h2>
+            <div class="gif_holder">
+              <img src="" alt="">
+            </div>
+
+            <p>Do you have an instructor preference?</p>
+            <div class="gender_select">
+              <div class="selection" id="male_select">
+                <p>Male</p>
+              </div>
+              <div class="selection" id="female_select">
+                <p>Female</p>
+              </div>
+              <div class="selection" id="no_pref_select">
+                <p>No Preference</p>
+              </div>
+            </div>
+
+            <p>Do you have a transmission preference?</p>
+            <div class="transmission_select">
+              <div class="selection" id="automation_select">
+                <p>Automatic</p>
+              </div>
+              <div class="selection" id="automation_select">
+                <p>Manual</p>
+              </div>
+              <div class="selection" id="automation_select">
+                <p>No Preference</p>
+              </div>
+            </div>
+
+            <p>Location</p>
+            <select name="location">
+              <option value="Victoria">Victoria</option>
+              <option value="NSW">New South Wales</option>
+              <option value="Adelaide">Adelaide</option>
+            </select>
+            <button id="modal_submit_2">Submit</button>
+
+          </div>
+
+          <div class="form_stages inactive" id="form_stage_3">
+            <h3>|  Desire.</h3>
+            <h2>Last step.</h2>
+            <div class="gif_holder">
+              <img src="" alt="">
+            </div>
+
+            <input type="text" id="hours_completed" placeholder="How many hours have you completed">
+            <input type="text" id="license_by" placeholder="When would you like to get your license by">
+            <button id="modal_submit_3">Submit</button>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
     <%= yield %>
 
-    <div class="free_lesson_form">
-
-      <div class="modal">
-
-
-
-      </div>
-
-    </div>
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+    <script>
+
+      var current_user_id = "";
+
+      $('.modal_close').on('click', function() {
+        $('.lead_modal').css("display", "none");
+      })
+
+       $('.free_lesson_btn').on('click', function() { showModal() })
+      $('.hero_cta').on('click', function() { showModal() })
+
+      function showModal() {
+        $('.lead_modal').css("display", "flex");
+      }
+
+      //Modal Form Listeners
+      $('#modal_submit_1').on('click', function() {
+
+        $('#form_stage_1')
+          .removeClass('is_active')
+          .addClass('inactive');
+
+        $('#form_stage_2')
+          .removeClass('inactive')
+          .addClass('is_active');
+
+        var name = $('#name').val();
+        var email = $('#email').val()
+        var phone = $('#phone').val()
+
+        $.ajax({
+          url: '/api/leads',
+          data: {
+            name: name,
+            email: email,
+            phone: phone
+          },
+          method: 'post'
+        }).done(function(response) {
+          current_user_id = response['current_id'];
+          var helloString = '|  Hi, ' + response['current_name'];
+          $('#form_introduction').html(helloString)
+        })
+
+      });
+
+      $('#modal_submit_2').on('click', function() {
+
+        $('#form_stage_2')
+          .removeClass('is_active')
+          .addClass('inactive');
+
+        $('#form_stage_3')
+          .removeClass('inactive')
+          .addClass('is_active');
+
+        var instructor_pref = $('#name').val();
+        var transmission_pref = $('#email').val();
+        var location = $('#phone').val();
+
+        $.ajax({
+          url: '/api/leads_2',
+          data: {
+            current_lead: current_user_id,
+            instructor_pref: instructor_pref,
+            transmission_pref: transmission_pref,
+            location: location
+          },
+          method: 'post'
+        }).done(function(response) {
+
+        })
+      });
+
+      $('#modal_submit_3').on('click', function() {
+
+        $('#form_stage_3')
+          .removeClass('is_active')
+          .addClass('inactive');
+
+        $('#form_stage_1')
+          .removeClass('inactive')
+          .addClass('is_active');
+
+        $('.lead_modal').hide();
+
+        var hours_completed = $('#hours_completed').val();
+        var license_by = $('#license_by').val();
+
+        $.ajax({
+          url: '/api/leads_3',
+          data: {
+            current_lead: current_user_id,
+            hours_completed: hours_completed,
+            license_by: license_by
+          },
+          method: 'post'
+        }).done(function(response) {
+          console.log(response)
+        })
+      });
+
+    </script>
   </body>
 </html>

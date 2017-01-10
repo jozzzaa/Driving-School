@@ -1,0 +1,120 @@
+
+
+// ################# MODAL STYLING #################
+
+.lead_modal {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 10000;
+  display: none;
+  padding: 50px;
+
+  .modal_close {
+    position: fixed;
+    top: 0px;
+    right: 0px;
+    padding: 20px;
+    cursor: pointer;
+    color: rgba(150, 150, 150, 1);
+    transition: 0.3s;
+
+    &:hover {
+      color: rgba(120, 120, 120, 1);
+    }
+
+  }
+
+  .lead_container {
+    width: 500px;
+    height: 700px;
+    background-color: white;
+    margin: 0 auto;
+    padding: 50px;
+  }
+
+  .form_mask {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    // border: 3px solid red;
+    // overflow: scroll;
+    position: relative;
+  }
+
+  .form_stages {
+    height: 100%;
+    width: 100%;
+    // background-color: mistyrose;
+    // border: 1px solid black;
+    float: left;
+    overflow: scroll;
+
+
+    h2 {
+      font-size: 2.3em;
+      color: #E21F35;
+      font-family: 'Exo', sans-serif;
+      line-height: 1.2em;
+      text-align: left;
+    }
+
+    h3 {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 1.1em;
+      line-height: 1.5em;
+      font-weight: 400;
+      color: #90959A;
+      text-align: left;
+      // padding-left: 40px;
+    }
+
+    .gif_holder {
+      background-color: black;
+      height: 150px;
+      width: 150px;
+      margin: 30px auto;
+    }
+  }
+
+
+  input {
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    margin: 5px 0px 10px 0px;
+    border: 1px solid #E21F35;
+    padding: 0px 15px 0px 15px
+  }
+
+  button {
+    width: 100%;
+    height: 50px;
+    margin: 5px 0px 0px 0px;
+    background-color: red;
+    color: white;
+    border: 0px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: rgba(red, 0.5);
+
+    }
+  }
+
+  .is_active {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+  }
+
+  .inactive {
+    display: none;
+
+  }
+
+}

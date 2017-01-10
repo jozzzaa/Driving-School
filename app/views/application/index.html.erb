@@ -1,11 +1,6 @@
 
-<header style="background-image: url('images/hero_old3.jpg')">
-
-  <!-- <div class="background_img">
-    <img src="images/hero_old2.jpg" alt="">
-  </div> -->
-
-  <!-- <div class="overlay"></div> -->
+<!-- <header style="background-image: url('images/hero_old3.jpg')"> -->
+<header>
 
   <div class="nav">
     <div class="nav_col_1">
@@ -14,14 +9,20 @@
       </a>
     </div>
     <div class="nav_col_2">
-      <ul>
-        <li>What we're about</li>
-        <li>Pass guarantee</li>
-        <li>Pricing</li>
-        <li>Testimonials</li>
+      <ul id="nav_button_holder">
+        <li id="benefit"><span class="nav_span">What we're about</span></li>
+        <p class="nav_divider">/</p>
+        <li id="pass_guarentee"><span class="nav_span">Pass guarantee</span></li>
+        <p class="nav_divider">/</p>
+        <li id="pricing"><span class="nav_span">Pricing</span></li>
+        <p class="nav_divider">/</p>
+        <li id="testimonials"><span class="nav_span">Testimonials</span></li>
       </ul>
     </div>
     <div class="nav_col_3">
+      <a href="https://www.facebook.com/ExcelDrive/" target='_blank'>
+        <p id="nav_facebook"><span class="fb_span"><i class="fa fa-facebook" aria-hidden="true"></i>Excel Drive on Facebook</span></p>
+      </a>
       <div class="free_lesson_btn">
         <p>Claim a Free Lesson</p>
       </div>
@@ -33,18 +34,24 @@
     <div class="hero_container">
 
       <div class="hero_left">
-        <h1>Get your license <br>today with <span id="hero_attributes"></span></h1>
-        <p id="hero_p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dolores esse repudiandae. Explicabo porro repudiandae, debitis magnam, consequuntur nisi ipsam.</p>
+        <h1><span id="hero_highlight">Get your license</span> <br>today with <span id="hero_attributes"></span></h1>
+        <p id="hero_p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dolores esse repudiandae. Explicabo porro repudiandae debitis.</p>
         <div class="hero_cta">
           <p>Claim a Free Lesson</p>
         </div>
       </div>
 
       <div class="hero_right">
+
         <!-- <video width="500" height="600" autoplay loop>
           <source src="video/timelapse.mp4" type="video/mp4">
         </video> -->
         <!-- <img src="images/placeholder.svg" alt=""> -->
+        <img id="bg_shape_1" src="images/bg_shape_1.png" alt="">
+        <!-- <div class="img_holder">
+          <img src="images/c700x420.jpg" alt="">
+        </div> -->
+
       </div>
 
     </div>
@@ -176,6 +183,15 @@
         backDelay: 3000,
         loop: true
       });
+  });
+
+  //Nav Autoscroll
+
+  $('#nav_button_holder').on('click', function(event) {
+    var stringFind = event.target.closest('li').id
+    var autoScrollString = '.' + stringFind;
+    console.log(autoScrollString)
+    $('html, body').animate({scrollTop: $(autoScrollString).offset().top}, 1500, 'swing');
   });
 
   // Click to view more
