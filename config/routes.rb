@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   get '/', to: 'application#index'
   get '/free-lesson', to: 'application#lead'
   get '/login', to: 'application#login'
-  get '/dashboard', to: 'dashboard#index'
+  # get '/dashboard', to: 'dashboard#index'
+  get '/j42jvn590H23nfnuRVJNW', to: 'dashboard#index'
+
 
   # getting the login form
   get '/session/new', to: 'session#new'
