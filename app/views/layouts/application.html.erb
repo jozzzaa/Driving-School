@@ -36,23 +36,30 @@
   <body>
 
     <div class="lead_modal">
+      <div class="underlay"></div>
       <div class="modal_close">
         <i class="fa fa-3x fa-times" aria-hidden="true"></i>
       </div>
       <div class="lead_container">
+        <div class="lead_title">
+          <img src="/images/logo.png" alt="">
+        </div>
         <div class="form_mask">
 
           <div class="form_stages is_active" id="form_stage_1">
 
             <h3>|  Introductions.</h3>
             <h2>Claim your free lesson.</h2>
-            <div class="gif_holder">
+            <!-- <div class="gif_holder">
               <img src="" alt="">
-            </div>
+            </div> -->
 
-            <input type="text" id="name" placeholder="Your name">
-            <input type="email" id="email" placeholder="Your email">
-            <input type="number" id="phone" placeholder="Your phone number">
+            <label for="name">Name</label>
+            <input type="text" id="name" >
+            <label for="email">Email</label>
+            <input type="email" id="email" >
+            <label for="phone">Phone</label>
+            <input type="text" id="phone" >
             <button id="modal_submit_1">Submit</button>
 
           </div>
@@ -61,42 +68,50 @@
 
             <h3 id="form_introduction"></h3>
             <h2>Tell us a little more?</h2>
-            <div class="gif_holder">
-              <img src="" alt="">
-            </div>
 
             <p>Do you have an instructor preference?</p>
             <div class="gender_select">
-              <div class="selection" id="male_select">
-                <p>Male</p>
+              <select name="gender" id="gender">
+                <option value="no_pref" selected="selected">No Preference</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+              </select>
+              <div class="drop_icon">
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
               </div>
-              <div class="selection" id="female_select">
-                <p>Female</p>
-              </div>
-              <div class="selection" id="no_pref_select">
-                <p>No Preference</p>
-              </div>
+
             </div>
 
             <p>Do you have a transmission preference?</p>
             <div class="transmission_select">
-              <div class="selection" id="automation_select">
-                <p>Automatic</p>
+
+              <select name="transmission" id="transmission">
+                <option value="no_pref" selected="selected">No Preference</option>
+                <option value="automatic">Automatic</option>
+                <option value="manual">Manual</option>
+              </select>
+              <div class="drop_icon">
+                <i class="fa fa-caret-down" aria-hidden="true"></i>
               </div>
-              <div class="selection" id="automation_select">
-                <p>Manual</p>
-              </div>
-              <div class="selection" id="automation_select">
-                <p>No Preference</p>
-              </div>
+
             </div>
 
             <p>Location</p>
-            <select name="location">
-              <option value="Victoria">Victoria</option>
-              <option value="NSW">New South Wales</option>
-              <option value="Adelaide">Adelaide</option>
+            <select name="location" id="location">
+              <option value="Victoria">Adelaide</option>
+              <option value="NSW">Sydney</option>
+              <option value="Adelaide">Victoria</option>
+              <option value="Adelaide">Perth</option>
+              <option value="Adelaide">Brisbane</option>
+              <option value="Adelaide">Darwin</option>
+              <option value="Adelaide">Albury/Wodonga</option>
+              <option value="Adelaide">NSW Central Coast</option>
+              <option value="Adelaide">Corowa</option>
+              <option value="Adelaide">Mornington Peninsula</option>
             </select>
+            <div class="drop_icon">
+              <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </div>
             <button id="modal_submit_2">Submit</button>
 
           </div>
@@ -104,12 +119,16 @@
           <div class="form_stages inactive" id="form_stage_3">
             <h3>|  Desire.</h3>
             <h2>Last step.</h2>
-            <div class="gif_holder">
+            <!-- <div class="gif_holder">
               <img src="" alt="">
-            </div>
+            </div> -->
 
-            <input type="text" id="hours_completed" placeholder="How many hours have you completed">
-            <input type="text" id="license_by" placeholder="When would you like to get your license by">
+            <p>How many hours have you completed?</p>
+            <input type="text" id="hours_completed">
+
+            <p>When would you like to get your license by?</p>
+            <input type="text" id="license_by">
+
             <button id="modal_submit_3">Submit</button>
 
           </div>
@@ -142,6 +161,16 @@
       //Modal Form Listeners
       $('#modal_submit_1').on('click', function() {
 
+        var name = $('#name').val();
+        var email = $('#email').val()
+        var phone = $('#phone').val()
+
+        if ( (name.length <= 2) == true || (email.includes("@") == false) || (phone.length < 8) ) {
+          console.log('error')
+          return;
+          // break;
+        }
+
         $('#form_stage_1')
           .removeClass('is_active')
           .addClass('inactive');
@@ -150,9 +179,6 @@
           .removeClass('inactive')
           .addClass('is_active');
 
-        var name = $('#name').val();
-        var email = $('#email').val()
-        var phone = $('#phone').val()
 
         $.ajax({
           url: '/api/leads',
@@ -164,13 +190,17 @@
           method: 'post'
         }).done(function(response) {
           current_user_id = response['current_id'];
-          var helloString = '|  Hi, ' + response['current_name'];
+          var helloString = '|  Hi ' + response['current_name'] + ",";
           $('#form_introduction').html(helloString)
         })
 
       });
 
       $('#modal_submit_2').on('click', function() {
+
+        var instructor_pref = $('#gender').find(":selected").text();
+        var transmission_pref = $('#transmission').find(":selected").text();
+        var location = $('#location').find(":selected").text();
 
         $('#form_stage_2')
           .removeClass('is_active')
@@ -179,10 +209,6 @@
         $('#form_stage_3')
           .removeClass('inactive')
           .addClass('is_active');
-
-        var instructor_pref = $('#name').val();
-        var transmission_pref = $('#email').val();
-        var location = $('#phone').val();
 
         $.ajax({
           url: '/api/leads_2',
@@ -200,6 +226,15 @@
 
       $('#modal_submit_3').on('click', function() {
 
+        var hours_completed = $('#hours_completed').val();
+        var license_by = $('#license_by').val();
+
+        if ( (hours_completed.length < 1) == true || (license_by.length < 1) == true ) {
+          console.log('error')
+          return;
+          // break;
+        }
+
         $('#form_stage_3')
           .removeClass('is_active')
           .addClass('inactive');
@@ -209,9 +244,6 @@
           .addClass('is_active');
 
         $('.lead_modal').hide();
-
-        var hours_completed = $('#hours_completed').val();
-        var license_by = $('#license_by').val();
 
         $.ajax({
           url: '/api/leads_3',
@@ -225,6 +257,10 @@
           console.log(response)
         })
       });
+
+      document.getElementById("myForm").reset();
+      document.getElementById("myForm").reset();
+      document.getElementById("myForm").reset();
 
     </script>
   </body>

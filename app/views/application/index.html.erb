@@ -1,6 +1,9 @@
 
-<!-- <header style="background-image: url('images/hero_old3.jpg')"> -->
 <header>
+
+  <div id="triangle_pattern">
+    <img src="/images/triangle_pattern.png" alt="">
+  </div>
 
   <div class="nav">
     <div class="nav_col_1">
@@ -10,8 +13,8 @@
     </div>
     <div class="nav_col_2">
       <ul id="nav_button_holder">
-        <li id="benefit"><span class="nav_span">What we're about</span></li>
-        <p class="nav_divider">/</p>
+        <!-- <li id="benefit"><span class="nav_span">What we're about</span></li>
+        <p class="nav_divider">/</p> -->
         <li id="pass_guarentee"><span class="nav_span">Pass guarantee</span></li>
         <p class="nav_divider">/</p>
         <li id="pricing"><span class="nav_span">Pricing</span></li>
@@ -35,7 +38,8 @@
 
       <div class="hero_left">
         <h1><span id="hero_highlight">Get your license</span> <br>today with <span id="hero_attributes"></span></h1>
-        <p id="hero_p">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Obcaecati dolores esse repudiandae. Explicabo porro repudiandae debitis.</p>
+        <p id="hero_p">Excel Drive boasts some of the finest instructors in Australia for that important milestone of learning to drive.</p>
+
         <div class="hero_cta">
           <p>Claim a Free Lesson</p>
         </div>
@@ -43,14 +47,8 @@
 
       <div class="hero_right">
 
-        <!-- <video width="500" height="600" autoplay loop>
-          <source src="video/timelapse.mp4" type="video/mp4">
-        </video> -->
-        <!-- <img src="images/placeholder.svg" alt=""> -->
-        <img id="bg_shape_1" src="images/bg_shape_1.png" alt="">
-        <!-- <div class="img_holder">
-          <img src="images/c700x420.jpg" alt="">
-        </div> -->
+        <!-- <img id="bg_shape_1" src="images/bg_shape_1.png" alt=""> -->
+        <img id="hero_feature" src="/images/hero_feature.png" alt="">
 
       </div>
 
@@ -58,117 +56,12 @@
 
   </div>
 
-  <div class="read_more">
+  <!-- <div class="read_more">
     <p>More about us</p>
     <img src="images/scroll.png" alt="">
-  </div>
+  </div> -->
 
 </header>
-
-<section class="benefit">
-
-  <div class="container">
-
-    <h2>What we're <span class="red_highlight">about</span></h2>
-    <p class="sub_title">Founded over 35 years ago we have devloped important guiding priciples to ensure every student is confident passing their final test and getting their license.</p>
-
-    <div class="col_third">
-      <img src="images/placeholder.svg" alt="">
-      <h3>Benefit 1 goes here</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus nihil ipsum ratione recusandae, fugit magni excepturi consequatur nisi totam officia assumenda asperiores fuga</p>
-
-    </div>
-    <div class="col_third">
-      <img src="images/placeholder.svg" alt="">
-      <h3>Benefit 2 goes here</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus nihil ipsum ratione recusandae, fugit magni excepturi consequatur nisi totam officia assumenda asperiores fuga</p>
-    </div>
-    <div class="col_third">
-      <img src="images/placeholder.svg" alt="">
-      <h3>Benefit 3 goes here</h3>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus nihil ipsum ratione recusandae, fugit magni excepturi consequatur nisi totam officia assumenda asperiores fuga</p>
-    </div>
-
-  </div>
-
-</section>
-
-<section class="pass_guarentee">
-
-  <div class="background_angle"></div>
-
-  <div class="container">
-
-    <div class="pass_left">
-      <img src="images/placeholder.svg" alt="">
-    </div>
-
-    <div class="pass_right">
-      <h2>Pass Guarentee</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-    </div>
-
-
-  </div>
-
-</section>
-
-<section class="pricing" style="background: url('patterns/agsquare.png')">
-
-  <div class="container">
-
-    <h2>Pricing</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fuga perferendis aspernatur veniam dolorem a in esse quaerat eum incidunt minus quae quod maiores consequuntur dolore, aut facere impedit sunt? Blanditiis.</p>
-
-  </div>
-
-  <!-- pricing finder -->
-
-</section>
-
-<section class="testimonials">
-
-  <div class="container testimonials_container">
-
-    <h2>Testimonials</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel harum eius, quis maxime velit voluptas laudantium non obcaecati quibusdam optio ut natus, voluptatum repellendus. Temporibus beatae labore fugiat, iure commodi.</p>
-
-    <!-- slider here -->
-    <!-- slick -->
-
-  </div>
-
-  <!-- background floating pictures of students -->
-
-</section>
-
-<section class="location">
-
-  <div id="map"></div>
-
-  <div class="legend">
-    <h2>Locations</h2>
-
-    <div class="button_holder">
-      <button class="location_btn" id="btn_melbourne">Melbourne</button>
-      <button class="location_btn" id="btn_sydney">Sydney</button>
-      <button class="location_btn" id="btn_adelaide">Adelaide</button>
-    </div>
-
-  </div>
-
-</section>
-
-<footer>
-
-  <div class="container">
-
-    <h1>Footer</h1>
-
-  </div>
-
-
-</footer>
 
 
 <script>
@@ -185,74 +78,4 @@
       });
   });
 
-  //Nav Autoscroll
-
-  $('#nav_button_holder').on('click', function(event) {
-    var stringFind = event.target.closest('li').id
-    var autoScrollString = '.' + stringFind;
-    console.log(autoScrollString)
-    $('html, body').animate({scrollTop: $(autoScrollString).offset().top}, 1500, 'swing');
-  });
-
-  // Click to view more
-  $(".read_more").on('click', function() {
-    $('html, body').animate({scrollTop: $(".benefit").offset().top}, 1000);
-  });
-
-  //Map Code
-  mapboxgl.accessToken = 'pk.eyJ1Ijoiam96enphYSIsImEiOiJjaXdubzgwbm0wMmFrMnRwMnBzaHNnczV2In0.Xyl1f3DIqdhLqrGe4-kzkg';
-  var map = new mapboxgl.Map({
-    container: 'map', // container id
-    style: 'mapbox://styles/mapbox/light-v9',
-    center: [133.6631636, -28.4421561],
-    zoom: 4
-  });
-
-  map.scrollZoom.disable();
-
-  var cities = {
-
-    'melbourne': {
-      duration: 6000,
-      center: [144.9562538, -37.8205624],
-      pitch: 0,
-      bearing: -20,
-      zoom: 11,
-      pitch: 25
-    },
-    'sydney': {
-      duration: 6000,
-      center: [151.1982344, -33.8775264],
-      bearing: 10,
-      zoom: 11,
-      pitch: 20
-    },
-    'adelaide': {
-      duration: 6000,
-      bearing: 20,
-      center: [138.587808, -34.9351732],
-      zoom: 11,
-      speed: 0.6,
-      pitch: 30
-    },
-  };
-
-  $('#btn_melbourne').on('click', function() {
-    map.flyTo( cities.melbourne );
-  })
-
-  $('#btn_sydney').on('click', function() {
-    map.flyTo( cities.sydney );
-  })
-
-  $('#btn_adelaide').on('click', function() {
-    map.flyTo( cities.adelaide );
-  })
-
-
 </script>
-
-
-<!-- <a href="/subscriptions">
-  <button>Subscription Sell Page</button>
-</a>  -->

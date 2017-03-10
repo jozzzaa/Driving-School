@@ -3,6 +3,7 @@ class CreateLeads < ActiveRecord::Migration[5.0]
     create_table :leads do |t|
       t.text :name
       t.text :email
+      t.string :phone_number
       t.string :gender_pref
       t.text :transmission_pref
       t.string :location

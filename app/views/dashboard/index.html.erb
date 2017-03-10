@@ -1,0 +1,123 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+
+<div class="dashboard_bg">
+
+  <div class="side_bar">
+    <div class="side_item">
+      <i class="fa fa-home" aria-hidden="true"></i>
+      <p>Dashboard</p>
+    </div>
+    <div class="side_item active">
+      <i class="fa fa-users" aria-hidden="true"></i>
+      <p>Leads</p>
+    </div>
+    <div class="side_item">
+      <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+      <p>Students</p>
+    </div>
+    <div class="side_item">
+      <i class="fa fa-calendar" aria-hidden="true"></i>
+      <p>Calendar</p>
+    </div>
+
+    <div class="side_item logout_btn">
+      <i class="fa fa-sign-out" aria-hidden="true"></i>
+      <p>Logout</p>
+    </div>
+
+  </div>
+
+  <div class="content">
+
+    <div class="lead_analytics">
+      <div class="stat_holder stat_total">
+        <div class="stat_title">Total Leads</div>
+        <div class="stat_view">295</div>
+      </div>
+      <div class="stat_holder">
+        <div class="stat_title">
+          <p>Today</p>
+        </div>
+        <div class="stat_view">
+          <p>5</p>
+        </div>
+      </div>
+      <div class="stat_holder">
+        <div class="stat_title">7 Days</div>
+        <div class="stat_view">34</div>
+      </div>
+      <div class="stat_holder">
+        <div class="stat_title">30 Days</div>
+        <div class="stat_view">120</div>
+      </div>
+      <div class="stat_holder stat_chart">
+        <canvas id="myChart" width="100%" height"95px"></canvas>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="panel_header">
+        <ul>
+          <li class="column_header p_date">Date</li>
+          <li class="column_header p_name">Name</li>
+          <li class="column_header p_email">Email</li>
+          <li class="column_header p_phone">Phone</li>
+          <li class="column_header p_location">Location</li>
+          <!-- Algorithm that tracks percentage of form complete and other factors asigning a point system -->
+          <li class="column_header p_score">Lead Score</li>
+          <!-- New Lead, Contacted, New Student, Assessment Lesson Etc -->
+          <li class="column_header p_status">Status</li>
+        </ul>
+      </div>
+      <div class="panel_list">
+        <% @leads.order("created_at DESC").each do |lead| %>
+        <a href=""></a>
+          <ul class="panel_row">
+            <li class="panel_item p_date"><%= lead.created_at.strftime("%b %d") %></li>
+            <li class="panel_item p_name"><%= lead.name %></li>
+            <li class="panel_item p_email"><%= lead.email %></li>
+            <li class="panel_item p_phone"><%= lead.phone_number %></li>
+            <li class="panel_item p_location"><%= lead.location %></li>
+            <li class="panel_item p_score"></li>
+            <li class="panel_item p_status"></li>
+          </ul>
+        </a>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.2.1/Chart.js"></script>
+
+<script>
+  var ctx = document.getElementById("myChart");
+  Chart.defaults.global.legend.display = false;
+  Chart.defaults.global.tooltips.enabled = false;
+
+  var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ["6w", "5w", "4w", "3w", "2w", "1w"],
+      datasets: [{
+        label: '# of Votes',
+        data: [3, 2, 5, 3, 19, 12],
+        backgroundColor: [ '#e53f57' ],
+        borderColor: [ '#e53f57' ],
+        borderWidth: 0,
+      }]
+    },
+    options: {
+      scales: {
+        xAxes: [{
+          display: false
+        }],
+        yAxes: [{
+          display: false
+        }]
+      }
+    }
+  });
+</script>

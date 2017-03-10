@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
 gem 'font-awesome-sass'
 gem 'pry-rails'
+gem 'mail', '~> 2.6', '>= 2.6.4'
 
 
 

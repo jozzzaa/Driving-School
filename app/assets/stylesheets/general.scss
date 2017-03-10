@@ -38,8 +38,8 @@ button:focus {
 
 // ################# COLOR VARIABLES #################
 
-$accent-red: #E21F35;
-$accent-red-hover: #cb162a;
+$accent-green: #2ecc71;
+$accent-green-hover: #20b961;
 $headline-color: white;
 $text-color: #90959A;
 $text-color-hover: #666c73;
@@ -69,7 +69,7 @@ h2 {
 
 h3 {
   font-size: 1em;
-  color: $accent-red;
+  color: $accent-green;
   font-family: $primary-font;
   letter-spacing: 0.2em;
 }
@@ -101,38 +101,64 @@ header {
   min-width: 100%;
   min-height: 100%;
   background-color: #171717;
+  background: #30588f; /* Old browsers */
+  background: -moz-radial-gradient(center, ellipse cover, #30588f 0%, #1c3352 100%); /* FF3.6-15 */
+  background: -webkit-radial-gradient(center, ellipse cover, #30588f 0%,#1c3352 100%); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(ellipse at center, #30588f 0%,#1c3352 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30588f', endColorstr='#1c3352',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  // 253e61
+
+  #triangle_pattern {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    // z-index: 1;
+    opacity: 0.10;
+    z-index: 5;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
+  }
 
   .nav {
     height: 12%;
-    // max-width: 1380px;
-    // background-color: plum;
+    max-width: 1300px;
+    background-color: #1c3352;
     display: flex;
     margin: 0 auto;
+    z-index: 10;
+    position: relative;
   }
 
   .nav_col_1 {
-    width: 15%;
+    width: 13%;
     // border: 1px solid black;
-    text-align: right;
+    text-align: left;
     display: flex;
     align-items: center;
     justify-content: center;
+    padding-left: 20px;
 
     img {
-      width: 60%;
+      width: 100%;
       cursor: pointer;
     }
   }
 
   .nav_col_2 {
-    width: 50%;
+    width: 52%;
     // border: 1px solid black;
-    padding-left: 20px;
+    padding-left: 10px;
 
     ul {
       // background-color: red;
       margin-top: 20px;
       text-transform: uppercase;
+      cursor: pointer;
     }
 
     li {
@@ -153,7 +179,7 @@ header {
     }
 
     li:hover .nav_span {
-      border-bottom: 1px solid #E21F35;
+      border-bottom: 1px solid #2ecc71;
     }
 
     .nav_divider {
@@ -168,23 +194,26 @@ header {
     width: 35%;
     // border: 1px solid black;
     text-align: right;
-    padding-right: 40px;
+    padding-right: 20px;
 
     .free_lesson_btn {
-      background-color: $accent-red;
+      background-color: $accent-green;
       padding: 5px 30px;
       display: inline-block;
       margin-top: 24px;
       -webkit-transform: skewX(-5deg);
       transform: skewX(-5deg);
-      border-radius: 5px;
+      border-radius: 3px;
       cursor: pointer;
       transition: 0.3s;
       color: white;
       font-size: 0.9em;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+
 
       &:hover {
-        background-color: $accent-red-hover;
+        background-color: $accent-green-hover;
         transform: scale(1.03);
       }
 
@@ -215,35 +244,46 @@ header {
     }
 
     .fb_span:hover {
-      border-bottom: 1px solid #E21F35;
+      border-bottom: 1px solid #2ecc71;
     }
 
   }
 
   .hero_container {
-    width: 1200px;
-    height: 85vh;
+    width: 1300px;
+    height: 90vh;
     margin: 0 auto;
     // background-color: green;
     display: flex;
     align-items: center;
     justify-content: center;
     padding-left: 20px;
+    position: relative;
+    z-index: 9;
 
     .hero_left {
-      width: 50%;
+      width: 40% !important;
       // border: 1px solid black;
       // padding-right: 11%;
       margin-top: -100px;
       z-index: 2;
+      overflow: visible;
+      position: relative;
+      // white-space: nowrap;
+      padding-top: 140px;
+
     }
 
     h1 {
       // padding-right: 5%;
+      white-space: nowrap;
+      position: absolute;
+      top: 0px;
+      left: 0px;
     }
 
     #hero_highlight {
-      background: -webkit-linear-gradient(#E21F35, #c31327);
+      background: -webkit-linear-gradient(#2ecc71, #20b961);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -253,7 +293,7 @@ header {
       padding-right: 20%;
       margin-top: 10px;
       padding-left: 30px;
-      border-left: 1px solid $accent-red;
+      border-left: 1px solid $accent-green;
       font-family: 'Playfair Display', serif;
       font-style: italic;
       font-size: 1.1em;
@@ -263,35 +303,49 @@ header {
     }
 
     .hero_cta {
-      background-color: $accent-red;
+      background-color: $accent-green;
       padding: 5px 25px;
       display: inline-block;
       margin-top: 15px;
       -webkit-transform: skewX(-5deg);
       transform: skewX(-5deg);
-      border-radius: 5px;
+      border-radius: 3px;
       cursor: pointer;
       transition: 0.3s;
       color: white;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+
 
       &:hover {
-        background-color: $accent-red-hover;
+        background-color: $accent-green-hover;
         transform: scale(1.03);
       }
 
     }
 
     .hero_right {
-      width: 50%;
+      width: 65%;
       // border: 1px solid black;
       padding: 2.5%;
-      margin-top: -100px;
+      margin-top: 0px;
+      height: 100%;
+      position: relative;
+      overflow: visible;
 
       #bg_shape_1 {
         position: absolute;
         top: 200px;
         left: 500px;
         z-index: 1;
+      }
+
+      #hero_feature {
+        position: absolute;
+        bottom: 0px;
+        right: 0px;
+        width: 1200px !important;
+        // width: auto;
       }
 
       .img_holder {
@@ -373,7 +427,7 @@ header {
   }
 
   .red_highlight {
-    color: $accent-red;
+    color: $accent-green;
     text-decoration: underline;
   }
 
@@ -507,11 +561,11 @@ header {
     text-align: center;
 
     h2 {
-      color: $accent-red;
+      color: $accent-green;
     }
 
     .location_btn {
-      background-color: $accent-red;
+      background-color: $accent-green;
       color: white;
       font-family: $secondary-font;
       width: 32%;
@@ -522,7 +576,7 @@ header {
       cursor: pointer;
 
       &:hover {
-        background-color: $accent-red-hover;
+        background-color: $accent-green-hover;
       }
     }
 
@@ -571,26 +625,43 @@ footer {
 }
 
 
-// ################# MODAL STYLING #################
-
-.lead_modal {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  z-index: 10000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  .modal_close {
-
-  }
-
-  .lead_container {
-    width: 500px;
-    height: 600px;
-    background-color: white;
-  }
-
-}
+// // ################# MODAL STYLING #################
+//
+// .lead_modal {
+//   position: fixed;
+//   height: 100%;
+//   width: 100%;
+//   background: url('/images/bg_pattern.svg') repeat;
+//   // background-color: rgba(0, 0, 0, 0.8);
+//   z-index: 10000;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   position: relative;
+//
+//   .underlay {
+//     position: absolute;
+//     top: 0px;
+//     left: 0px;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, 0.8);
+//     z-index: 2;
+//   }
+//
+//   .modal_close {
+//     position: absolute;
+//     top: 0px;
+//     right: 0px;
+//     z-index: 5;
+//   }
+//
+//   .lead_container {
+//     width: 500px;
+//     // height: 600px;
+//     background-color: white;
+//     position: relative;
+//     z-index: 5;
+//   }
+//
+// }

@@ -1,0 +1,261 @@
+.dashboard_bg {
+  background-color: #ebeef4;
+  height: 100%;
+  width: 100%;
+  display: flex;
+
+  .side_bar {
+    height: 100%;
+    width: 90px;
+    background-color: #29293b;
+    display: inline-block;
+    position: relative;
+    padding-top: 10px;
+
+    .side_item {
+      width: 90px;
+      height: 90px;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      transition: 0.3s;
+      cursor: pointer;
+
+      &:hover {
+        background-color: #35354b;
+      }
+
+      i {
+        color: rgba(#748190, 0.8);
+        font-size: 1.7em;
+        padding-bottom: 7px;
+      }
+
+      p {
+        color: rgba(#748190, 0.8);
+        margin: 0;
+        padding: 0;
+        font-size: 0.8em;
+      }
+
+    }
+
+    .active {
+      background-color: #e53f57;
+
+      p, i {
+        color: white;
+      }
+
+      &:hover {
+        background-color: #e53f57;
+
+      }
+
+    }
+
+    .logout_btn {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+    }
+
+  }
+
+  .content {
+    height: 100%;
+    width: calc(100% - 100px);
+    background-color: inherit;
+    display: inline-block;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .lead_analytics {
+    width: 90%;
+    height: 15%;
+    background-color: white;
+    border-radius: 3px;
+    margin: 0.5%;
+    background-color: #29293b;
+    display: flex;
+    padding: 1%;
+
+    .stat_holder {
+      width: 20%;
+      border-right: 2px solid rgba(#fff, 0.1);
+
+      .stat_title {
+        // border: 1px solid red;
+        text-align: center;
+        color: rgba(#748190, 0.8);
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 500;
+        margin-top: 10px;
+
+        p {
+          padding: 0;
+          margin: 0;
+        }
+
+      }
+
+      #myChart {
+        height: 100% !important;
+        padding-left: 10px;
+        border-bottom-right-radius: 2px;
+        border-bottom-left-radius: 2px;
+      }
+
+      .stat_view {
+        // border: 1px solid red;
+        font-size: 3.5em;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 700;
+        text-align: center;
+        color: #e53f57;
+        width: 100%;
+        margin-top: -10px;
+        padding: 0;
+        display: inline-block;
+
+        p {
+          padding: 0;
+          margin: 0;
+        }
+
+      }
+
+    }
+
+    .stat_total {
+      width: 25%;
+    }
+
+    .stat_chart {
+      width: 40%;
+      border-right: 0px solid #fff;
+
+    }
+
+  }
+
+  .panel {
+    background-color: #fff;
+    width: 90%;
+    height: 70%;
+    margin: 0 auto;
+    border: 1px solid #eceff3;
+    border-radius: 5px;
+    position: relative;
+    margin: 0.5%;
+
+
+    .panel_header {
+      height: 70px;
+      width: 100%;
+      border-bottom: 1px solid #eceff3;
+      background-color: #f7f7f7;
+      border-top-left-radius: 10px;
+      border-top-right-radius: 10px;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+    }
+
+    .column_header {
+      display: inline-block;
+      line-height: 70px;
+      // border: 1px solid red;
+      text-align: center;
+      box-sizing: border-box;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.8em;
+      font-weight: 600;
+      color: #747474;
+    }
+
+    .p_date {
+      width: 10%;
+      height: 50px;
+    }
+
+    .p_name {
+      width: 15%;
+      height: 50px;
+    }
+
+    .p_email {
+      width: 25%;
+      height: 50px;
+    }
+
+    .p_phone {
+      width: 15%;
+      height: 50px;
+    }
+
+    .p_location {
+      width: 15%;
+      height: 50px;
+    }
+
+    .p_score {
+      width: 8%;
+      height: 50px;
+    }
+
+    .p_status {
+      width: 13%;
+      height: 50px;
+    }
+
+    .panel_row {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      border-bottom: 1px solid #f5f5f5;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: #fafafa;
+        border-bottom: 1px solid #ededed;
+
+      }
+    }
+
+    .panel_list {
+      // border: 1px solid red;
+      height: calc(100% - 70px);
+      width: 100%;
+      overflow: scroll;
+    }
+
+    .panel_item {
+      display: inline-block;
+      line-height: 50px;
+      // border: 1px solid red;
+      text-align: center;
+      box-sizing: border-box;
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.8em;
+      font-weight: 500;
+      color: #747474;
+    }
+
+    a {
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+  }
+}

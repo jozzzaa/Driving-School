@@ -1,6 +1,8 @@
+
 module Api
 
   class LeadsController < ApplicationController
+    require 'mail'
 
     def new
     end
@@ -10,7 +12,11 @@ module Api
       @lead.name = params[:name].to_str
       @lead.email = params[:email].to_str
       @lead.phone_number = params[:phone].to_str
+      @lead.created_at = (Time.zone = "EST")
       @lead.save
+
+      ticket = ::MailSend.new
+      puts ticket
 
       current_id = @lead.id
       current_name = @lead.name
