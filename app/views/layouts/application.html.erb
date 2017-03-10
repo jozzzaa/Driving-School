@@ -146,16 +146,20 @@
     <script>
 
       var current_user_id = "";
+      $('.lead_modal').hide();
+
 
       $('.modal_close').on('click', function() {
-        $('.lead_modal').css("display", "none");
+        $('.lead_modal').fadeOut();
+        // $('.lead_modal').css("display", "none");
       })
 
        $('.free_lesson_btn').on('click', function() { showModal() })
       $('.hero_cta').on('click', function() { showModal() })
 
       function showModal() {
-        $('.lead_modal').css("display", "flex");
+        $('.lead_modal').fadeIn();
+        // $('.lead_modal').css("display", "flex");
       }
 
       //Modal Form Listeners

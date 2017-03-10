@@ -11,7 +11,7 @@
   display: none;
   padding: 10px;
   background: url('/images/bg_pattern.svg') repeat;
-  // display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
 
@@ -176,7 +176,7 @@
     &:hover {
       color: #c9c5c5;
     }
-    
+
   }
 
   label {
