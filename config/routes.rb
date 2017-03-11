@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :leads
+  # resources :leads
   resources :subscriptions
 
   namespace :api do
@@ -12,6 +12,8 @@ Rails.application.routes.draw do
   get '/login', to: 'application#login'
   # get '/dashboard', to: 'dashboard#index'
   get '/j42jvn590H23nfnuRVJNW', to: 'dashboard#index'
+  get '/j42jvn590H23nfnuRVJNW/:id', to: 'dashboard#lead'
+
 
 
   # getting the login form

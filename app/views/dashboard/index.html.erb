@@ -71,7 +71,7 @@
       </div>
       <div class="panel_list">
         <% @leads.order("created_at DESC").each do |lead| %>
-        <a href=""></a>
+        <a href="/j42jvn590H23nfnuRVJNW/<%= lead.id %>">
           <ul class="panel_row">
             <li class="panel_item p_date"><%= lead.created_at.strftime("%b %d") %></li>
             <li class="panel_item p_name"><%= lead.name %></li>
