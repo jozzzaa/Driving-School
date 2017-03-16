@@ -9,6 +9,7 @@ class CreateLeads < ActiveRecord::Migration[5.0]
       t.string :location
       t.text :hours_completed
       t.text :license_by
+      t.string :status
 
       t.timestamps
     end

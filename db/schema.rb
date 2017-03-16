@@ -33,15 +33,6 @@ ActiveRecord::Schema.define(version: 20170316110726) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "instructor_locations", force: :cascade do |t|
-    t.integer  "instructor_id"
-    t.integer  "location_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["instructor_id"], name: "index_instructor_locations_on_instructor_id", using: :btree
-    t.index ["location_id"], name: "index_instructor_locations_on_location_id", using: :btree
-  end
-
   create_table "instructors", force: :cascade do |t|
     t.string   "name"
     t.string   "email"
@@ -54,6 +45,15 @@ ActiveRecord::Schema.define(version: 20170316110726) do
     t.index ["id"], name: "index_instructors_on_id", using: :btree
   end
 
+  create_table "instructors_locations", force: :cascade do |t|
+    t.integer  "instructor_id"
+    t.integer  "location_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["instructor_id"], name: "index_instructors_locations_on_instructor_id", using: :btree
+    t.index ["location_id"], name: "index_instructors_locations_on_location_id", using: :btree
+  end
+
   create_table "leads", force: :cascade do |t|
     t.text     "name"
     t.text     "email"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20170316110726) do
     t.string   "location"
     t.text     "hours_completed"
     t.text     "license_by"
+    t.string   "status"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
   end
