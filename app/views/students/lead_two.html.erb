@@ -1,0 +1,78 @@
+
+
+<div class="option_container">
+
+  <div class="underlay"></div>
+
+  <div class="lead_container">
+    <div class="lead_title">
+      <a href="/">
+        <img src="/images/logo.png" alt="">
+      </a>
+    </div>
+
+    <div class="form_mask">
+
+      <div class="form_stages">
+
+        <h3>- Help us find your -</h3>
+        <h2>Perfect Instructor?</h2>
+
+        <form action="more-info-three" method="post">
+          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+          <input type="hidden" name="id" value="<%= params[:id] %>">
+
+          <p>Do you have an instructor preference?</p>
+          <div class="gender_select">
+            <select name="gender" id="gender">
+              <option value="no_pref" selected="selected">No Preference</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+            </select>
+            <div class="drop_icon">
+              <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </div>
+
+          </div>
+
+          <p>Do you have a transmission preference?</p>
+          <div class="transmission_select">
+
+            <select name="transmission" id="transmission">
+              <option value="no_pref" selected="selected">No Preference</option>
+              <option value="automatic">Automatic</option>
+              <option value="manual">Manual</option>
+            </select>
+            <div class="drop_icon">
+              <i class="fa fa-caret-down" aria-hidden="true"></i>
+            </div>
+
+          </div>
+
+          <p>Location</p>
+          <select name="location" id="location">
+            <option value="Adelaide">Adelaide</option>
+            <option value="Sydney">Sydney</option>
+            <option value="Victoria">Victoria</option>
+            <option value="Perth">Perth</option>
+            <option value="Brisbane">Brisbane</option>
+            <option value="Darwin">Darwin</option>
+            <option value="Albury/Wodonga">Albury/Wodonga</option>
+            <option value="NSW Central Coast">NSW Central Coast</option>
+            <option value="Corowa">Corowa</option>
+            <option value="Mornington Peninsula">Mornington Peninsula</option>
+          </select>
+          <div class="drop_icon">
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </div>
+
+          <button id="modal_submit_2">Submit</button>
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

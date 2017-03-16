@@ -1,1 +1,40 @@
-<p>New Lead</p>
+
+
+<div class="option_container">
+
+  <div class="underlay"></div>
+
+  <div class="lead_container">
+    <div class="lead_title">
+      <a href="/">
+        <img src="/images/logo.png" alt="">
+      </a>
+    </div>
+
+    <div class="form_mask">
+
+      <div class="form_stages">
+
+        <h3>- Welcome -</h3>
+        <h2>Get Started Easily</h2>
+
+        <form action="/more-info-two" method="post">
+          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" >
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" name="phone">
+
+          <button>Submit</button>
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

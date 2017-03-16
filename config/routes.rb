@@ -18,8 +18,16 @@ Rails.application.routes.draw do
 
   # Student Onboarding and Leads
   get '/get-started', to: 'students#start'
+  get '/thank-you', to: 'students#thanks'
   get '/more-info', to: 'students#lead'
+  get '/more-info-two', to: 'students#lead_two'
+  get '/more-info-three', to: 'students#lead_three'
   get '/booking', to: 'students#new'
+
+  # Lead form
+  post '/more-info-two', to: 'students#stage_one'
+  post '/more-info-three', to: 'students#stage_two'
+  post '/more-info-final', to: 'students#stage_three'
 
   # Login
   get '/login', to: 'application#login'
@@ -39,7 +47,7 @@ Rails.application.routes.draw do
   # destroying a session / logging out
   delete '/session', to: 'session#destroy'
 
-  # lead handler - Current
+  # Lead Handler - Current
   post '/api/leads', to: 'api/leads#create'
   post '/api/leads_2', to: 'api/leads#edit_stage2'
   post '/api/leads_3', to: 'api/leads#edit_stage3'

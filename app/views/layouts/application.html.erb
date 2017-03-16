@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
 
-
-
     <!-- Facebook Pixel Code -->
     <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -33,7 +31,7 @@
     <script src="//load.sumome.com/" data-sumo-site-id="02cc3dacd9446603e0cc6a05205c4598ac526b40dfa5ecb6cce3bb5af7dcbd71" async="async"></script>
 
     <script>
-    
+
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
@@ -49,237 +47,10 @@
 
   <body>
 
-    <div class="lead_modal">
-      <div class="underlay"></div>
-      <div class="modal_close">
-        <i class="fa fa-3x fa-times" aria-hidden="true"></i>
-      </div>
-      <div class="lead_container">
-        <div class="lead_title">
-          <img src="/images/logo.png" alt="">
-        </div>
-        <div class="form_mask">
-
-          <div class="form_stages is_active" id="form_stage_1">
-
-            <h3>|  Introduction.</h3>
-            <h2>Get Started Easily.</h2>
-            <!-- <div class="gif_holder">
-              <img src="" alt="">
-            </div> -->
-
-            <label for="name">Name</label>
-            <input type="text" id="name" >
-            <label for="email">Email</label>
-            <input type="email" id="email" >
-            <label for="phone">Phone</label>
-            <input type="text" id="phone" >
-            <button id="modal_submit_1">Submit</button>
-
-          </div>
-
-          <div class="form_stages inactive" id="form_stage_2">
-
-            <h3 id="form_introduction"></h3>
-            <h2>Tell us a little more?</h2>
-
-            <p>Do you have an instructor preference?</p>
-            <div class="gender_select">
-              <select name="gender" id="gender">
-                <option value="no_pref" selected="selected">No Preference</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-              <div class="drop_icon">
-                <i class="fa fa-caret-down" aria-hidden="true"></i>
-              </div>
-
-            </div>
-
-            <p>Do you have a transmission preference?</p>
-            <div class="transmission_select">
-
-              <select name="transmission" id="transmission">
-                <option value="no_pref" selected="selected">No Preference</option>
-                <option value="automatic">Automatic</option>
-                <option value="manual">Manual</option>
-              </select>
-              <div class="drop_icon">
-                <i class="fa fa-caret-down" aria-hidden="true"></i>
-              </div>
-
-            </div>
-
-            <p>Location</p>
-            <select name="location" id="location">
-              <option value="Victoria">Adelaide</option>
-              <option value="NSW">Sydney</option>
-              <option value="Adelaide">Victoria</option>
-              <option value="Adelaide">Perth</option>
-              <option value="Adelaide">Brisbane</option>
-              <option value="Adelaide">Darwin</option>
-              <option value="Adelaide">Albury/Wodonga</option>
-              <option value="Adelaide">NSW Central Coast</option>
-              <option value="Adelaide">Corowa</option>
-              <option value="Adelaide">Mornington Peninsula</option>
-            </select>
-            <div class="drop_icon">
-              <i class="fa fa-caret-down" aria-hidden="true"></i>
-            </div>
-            <button id="modal_submit_2">Submit</button>
-
-          </div>
-
-          <div class="form_stages inactive" id="form_stage_3">
-            <h3>|  Desire.</h3>
-            <h2>Last step.</h2>
-            <!-- <div class="gif_holder">
-              <img src="" alt="">
-            </div> -->
-
-            <p>How many hours have you completed?</p>
-            <input type="text" id="hours_completed">
-
-            <p>When would you like to get your license by?</p>
-            <input type="text" id="license_by">
-
-            <button id="modal_submit_3">Submit</button>
-
-          </div>
-
-        </div>
-      </div>
-    </div>
-
     <%= yield %>
-
 
     <script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.0/TweenMax.min.js"></script>
     <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 
-    <script>
-
-      var current_user_id = "";
-      $('.lead_modal').hide();
-
-
-      $('.modal_close').on('click', function() {
-        $('.lead_modal').fadeOut();
-        // $('.lead_modal').css("display", "none");
-      })
-
-       $('.free_lesson_btn').on('click', function() { showModal() })
-      $('.hero_cta').on('click', function() { showModal() })
-
-      function showModal() {
-        $('.lead_modal').fadeIn();
-        // $('.lead_modal').css("display", "flex");
-      }
-
-      //Modal Form Listeners
-      $('#modal_submit_1').on('click', function() {
-
-        var name = $('#name').val();
-        var email = $('#email').val()
-        var phone = $('#phone').val()
-
-        if ( (name.length <= 2) == true || (email.includes("@") == false) || (phone.length < 8) ) {
-          console.log('error')
-          return;
-          // break;
-        }
-
-        $('#form_stage_1')
-          .removeClass('is_active')
-          .addClass('inactive');
-
-        $('#form_stage_2')
-          .removeClass('inactive')
-          .addClass('is_active');
-
-
-        $.ajax({
-          url: '/api/leads',
-          data: {
-            name: name,
-            email: email,
-            phone: phone
-          },
-          method: 'post'
-        }).done(function(response) {
-          current_user_id = response['current_id'];
-          var helloString = '|  Hi ' + response['current_name'] + ",";
-          $('#form_introduction').html(helloString)
-        })
-
-      });
-
-      $('#modal_submit_2').on('click', function() {
-
-        var instructor_pref = $('#gender').find(":selected").text();
-        var transmission_pref = $('#transmission').find(":selected").text();
-        var location = $('#location').find(":selected").text();
-
-        $('#form_stage_2')
-          .removeClass('is_active')
-          .addClass('inactive');
-
-        $('#form_stage_3')
-          .removeClass('inactive')
-          .addClass('is_active');
-
-        $.ajax({
-          url: '/api/leads_2',
-          data: {
-            current_lead: current_user_id,
-            instructor_pref: instructor_pref,
-            transmission_pref: transmission_pref,
-            location: location
-          },
-          method: 'post'
-        }).done(function(response) {
-
-        })
-      });
-
-      $('#modal_submit_3').on('click', function() {
-
-        var hours_completed = $('#hours_completed').val();
-        var license_by = $('#license_by').val();
-
-        if ( (hours_completed.length < 1) == true || (license_by.length < 1) == true ) {
-          console.log('error')
-          return;
-          // break;
-        }
-
-        $('#form_stage_3')
-          .removeClass('is_active')
-          .addClass('inactive');
-
-        $('#form_stage_1')
-          .removeClass('inactive')
-          .addClass('is_active');
-
-        $('.lead_modal').hide();
-
-        $.ajax({
-          url: '/api/leads_3',
-          data: {
-            current_lead: current_user_id,
-            hours_completed: hours_completed,
-            license_by: license_by
-          },
-          method: 'post'
-        }).done(function(response) {
-          console.log(response)
-        })
-      });
-
-      document.getElementById("myForm").reset();
-      document.getElementById("myForm").reset();
-      document.getElementById("myForm").reset();
-
-    </script>
   </body>
 </html>

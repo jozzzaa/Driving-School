@@ -1,0 +1,40 @@
+
+
+<div class="option_container">
+
+  <div class="underlay"></div>
+
+  <div class="lead_container">
+    <div class="lead_title">
+      <a href="/">
+        <img src="/images/logo.png" alt="">
+      </a>
+    </div>
+
+    <div class="form_mask">
+
+      <div class="form_stages">
+
+        <h3>- Desire -</h3>
+        <h2>Last step!</h2>
+
+        <form action="more-info-final" method="post">
+          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+          <input type="hidden" name="id" value="<%= params[:id] %>">
+
+          <p>How many hours have you completed?</p>
+          <input type="text" id="hours_completed" name="hours_completed">
+
+          <p>When would you like to get your license by?</p>
+          <input type="text" id="license_by" name="license_by">
+
+          <button id="modal_submit_3">Submit</button>
+
+        </form>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>
