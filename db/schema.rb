@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170228041454) do
+ActiveRecord::Schema.define(version: 20170316110726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "appointments", force: :cascade do |t|
+    t.integer  "student_id"
+    t.integer  "instructor_id"
+    t.date     "appointment_date"
+    t.time     "appointment_time"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["instructor_id"], name: "index_appointments_on_instructor_id", using: :btree
+    t.index ["student_id"], name: "index_appointments_on_student_id", using: :btree
+  end
+
+  create_table "emails", force: :cascade do |t|
+    t.text     "subject"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "instructor_locations", force: :cascade do |t|
+    t.integer  "instructor_id"
+    t.integer  "location_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["instructor_id"], name: "index_instructor_locations_on_instructor_id", using: :btree
+    t.index ["location_id"], name: "index_instructor_locations_on_location_id", using: :btree
+  end
+
+  create_table "instructors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.string   "transmission"
+    t.string   "gender"
+    t.string   "address_text"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["id"], name: "index_instructors_on_id", using: :btree
+  end
 
   create_table "leads", force: :cascade do |t|
     t.text     "name"
@@ -26,6 +65,32 @@ ActiveRecord::Schema.define(version: 20170228041454) do
     t.text     "license_by"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.integer  "postcode"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["id"], name: "index_locations_on_id", using: :btree
+  end
+
+  create_table "sms", force: :cascade do |t|
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "students", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.text     "address"
+    t.integer  "postcode"
+    t.string   "ref_type"
+    t.integer  "ref_person"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["id"], name: "index_students_on_id", using: :btree
   end
 
   create_table "subscriptions", force: :cascade do |t|

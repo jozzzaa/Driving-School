@@ -1,14 +1,11 @@
 class CreateInstructorLocations < ActiveRecord::Migration[5.0]
   def change
-    create_table :instructor_locations do |t|
-      t.integer :instructor_id
-      t.integer :location_id
+    create_table :instructors_locations do |t|
+      t.belongs_to :instructor, index: true
+      t.belongs_to :location, index: true
 
       t.timestamps
     end
-
-    add_index :instructor_locations, :instructor_id
-    add_index :instructor_locations, :location_id
 
   end
 end

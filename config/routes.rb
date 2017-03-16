@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :locations
   resources :appointments
   resources :instructors
-  resources :students
+  # resources :students
   # resources :leads
   resources :subscriptions
 
@@ -13,9 +13,19 @@ Rails.application.routes.draw do
     resources :leads
   end
 
+  # HomePage and Information
   get '/', to: 'application#index'
-  get '/free-lesson', to: 'application#lead'
+
+  # Student Onboarding and Leads
+  get '/get-started', to: 'students#start'
+  get '/more-info', to: 'students#lead'
+  get '/booking', to: 'students#new'
+
+  # Login
   get '/login', to: 'application#login'
+
+
+  # dashboard
   # get '/dashboard', to: 'dashboard#index'
   get '/j42jvn590H23nfnuRVJNW', to: 'dashboard#index'
   get '/j42jvn590H23nfnuRVJNW/:id', to: 'dashboard#lead'
@@ -29,7 +39,7 @@ Rails.application.routes.draw do
   # destroying a session / logging out
   delete '/session', to: 'session#destroy'
 
-  # lead handler
+  # lead handler - Current
   post '/api/leads', to: 'api/leads#create'
   post '/api/leads_2', to: 'api/leads#edit_stage2'
   post '/api/leads_3', to: 'api/leads#edit_stage3'
