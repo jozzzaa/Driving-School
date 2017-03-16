@@ -1,0 +1,2 @@
+class InstructorLocation < ApplicationRecord
+end

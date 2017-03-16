@@ -1,0 +1,2 @@
+class SMsController < ApplicationController
+end

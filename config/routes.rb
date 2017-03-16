@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  resources :sms
+  resources :emails
+  resources :locations
+  resources :appointments
+  resources :instructors
+  resources :students
   # resources :leads
   resources :subscriptions
 
