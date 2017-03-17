@@ -39,7 +39,9 @@
 
     </div>
     <div class="booking_summary">
-      <button id="book_btn">Book Now</button>
+      <a href="/thank-you">
+        <button id="book_btn">Book Now</button>
+      </a>
     </div>
   </div>
 
@@ -49,7 +51,7 @@
 
 <script>
 
-  $('.booking_options').on('click', function() {
+  $('#date_picker').on('click', function() {
     setTimeout(updateTimeRegion, 500)
   })
 
