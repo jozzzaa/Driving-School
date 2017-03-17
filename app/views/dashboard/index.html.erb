@@ -64,7 +64,6 @@
           <li class="column_header p_phone">Phone</li>
           <li class="column_header p_location">Location</li>
           <!-- Algorithm that tracks percentage of form complete and other factors asigning a point system -->
-          <li class="column_header p_score">Lead Score</li>
           <!-- New Lead, Contacted, New Student, Assessment Lesson Etc -->
           <li class="column_header p_status">Status</li>
         </ul>
@@ -78,17 +77,16 @@
               <li class="panel_item p_email"><%= lead.email %></li>
               <li class="panel_item p_phone"><%= lead.phone_number %></li>
               <li class="panel_item p_location"><%= lead.location %></li>
-              <li class="panel_item p_score"></li>
               <li class="panel_item p_status"></li>
             </ul>
           </a>
-          <i class="fa fa-envelope-o" aria-hidden="true"></i>
-          <form action="/remove-lead" method="post">
+          <!-- <i class="fa fa-envelope-o" aria-hidden="true"></i> -->
+          <!-- <form action="/remove-lead" method="post" id="lead_row_del">
             <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
             <input type="hidden" name="_method" value="delete">
             <input type="hidden" name="id" value="<%= lead.id %>">
             <button><i class="fa fa-trash" aria-hidden="true"></i></button>
-          </form>
+          </form> -->
           <% end %>
       </div>
     </div>
