@@ -1,1 +1,87 @@
-<p>Booking</p>
+
+
+<div class="option_container" id="booking_cont">
+
+  <div class="underlay" id="booking_underlay"></div>
+
+  <div class="booking_container">
+    <div class="booking_title">
+      <h3>- Start Driving -</h3>
+      <h2>Make a Booking</h2>
+    </div>
+    <div class="booking_content">
+      <div class="booking_inputs">
+        <h4>Booking Details</h4>
+        <label for="name">Name</label>
+        <input type="text" id="name" name="name">
+        <label for="email">Email / Phone</label>
+        <input type="email" id="contact" name="contact" >
+        <label for="phone">Location</label>
+        <input type="text" id="location" name="location">
+        <label for="transmission">Transmission</label>
+        <div class="transmission_select">
+          <select name="transmission" id="transmission">
+            <option value="no_pref" selected="selected">No Preference</option>
+            <option value="automatic">Automatic</option>
+            <option value="manual">Manual</option>
+          </select>
+          <div class="drop_icon">
+            <i class="fa fa-caret-down" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+      <div class="booking_options">
+        <h4>Select a Time</h4>
+        <div id="date_picker"></div>
+        <div id="time_picker"></div>
+      </div>
+
+    </div>
+    <div class="booking_summary">
+      <button id="book_btn">Book Now</button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+
+  $('.booking_options').on('click', function() {
+    setTimeout(updateTimeRegion, 500)
+  })
+
+  var cal = $('#date_picker').width();
+  $('#date_picker').css({'height': cal + 'px'})
+
+  var datepicker = new Datepickk();
+  datepicker.container = document.querySelector('#date_picker');
+  datepicker.inline = true;
+  datepicker.today = false;
+  datepicker.show();
+
+  function formatDate(date) {
+    var monthNames = [
+      "January", "February", "March",
+      "April", "May", "June", "July",
+      "August", "September", "October",
+      "November", "December"
+    ];
+
+    var day = date.getDate();
+    var monthIndex = date.getMonth();
+    var year = date.getFullYear();
+
+    return day + ' ' + monthNames[monthIndex] + ' ' + year;
+  }
+
+  function updateTimeRegion() {
+
+    var timeArea = $('#time_picker')
+    timeArea.empty()
+    $.each(datepicker.selectedDates, function(index, value) {
+      var timeOption = $('<div>').addClass('timeDis').text( formatDate(value) );
+      timeArea.append( timeOption );
+    })
+  }
+
+</script>

@@ -70,19 +70,26 @@
         </ul>
       </div>
       <div class="panel_list">
-        <% @leads.order("created_at DESC").each do |lead| %>
-        <a href="/j42jvn590H23nfnuRVJNW/<%= lead.id %>">
-          <ul class="panel_row">
-            <li class="panel_item p_date"><%= lead.created_at.strftime("%b %d") %></li>
-            <li class="panel_item p_name"><%= lead.name %></li>
-            <li class="panel_item p_email"><%= lead.email %></li>
-            <li class="panel_item p_phone"><%= lead.phone_number %></li>
-            <li class="panel_item p_location"><%= lead.location %></li>
-            <li class="panel_item p_score"></li>
-            <li class="panel_item p_status"></li>
-          </ul>
-        </a>
-        <% end %>
+          <% @leads.order("created_at DESC").each do |lead| %>
+          <a href="/j42jvn590H23nfnuRVJNW/<%= lead.id %>">
+            <ul class="panel_row">
+              <li class="panel_item p_date"><%= lead.created_at.strftime("%b %d") %></li>
+              <li class="panel_item p_name"><%= lead.name %></li>
+              <li class="panel_item p_email"><%= lead.email %></li>
+              <li class="panel_item p_phone"><%= lead.phone_number %></li>
+              <li class="panel_item p_location"><%= lead.location %></li>
+              <li class="panel_item p_score"></li>
+              <li class="panel_item p_status"></li>
+            </ul>
+          </a>
+          <i class="fa fa-envelope-o" aria-hidden="true"></i>
+          <form action="/remove-lead" method="post">
+            <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+            <input type="hidden" name="_method" value="delete">
+            <input type="hidden" name="id" value="<%= lead.id %>">
+            <button><i class="fa fa-trash" aria-hidden="true"></i></button>
+          </form>
+          <% end %>
       </div>
     </div>
 

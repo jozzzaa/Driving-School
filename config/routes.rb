@@ -37,6 +37,7 @@ Rails.application.routes.draw do
   # get '/dashboard', to: 'dashboard#index'
   get '/j42jvn590H23nfnuRVJNW', to: 'dashboard#index'
   get '/j42jvn590H23nfnuRVJNW/:id', to: 'dashboard#lead'
+  delete '/remove-lead', to: 'dashboard#remove'
 
 
 
