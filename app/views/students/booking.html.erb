@@ -17,8 +17,8 @@
         <label for="email">Email / Phone</label>
         <input type="email" id="contact" name="contact" >
         <label for="phone">Location</label>
-        <input type="text" id="location" name="location">
-        <label for="transmission">Transmission</label>
+        <input type="text" id="locationInput" name="location" placeholder="">
+        <label for="transmission">Transmission (Manual / Automatic)</label>
         <div class="transmission_select">
           <select name="transmission" id="transmission">
             <option value="no_pref" selected="selected">No Preference</option>
@@ -33,6 +33,7 @@
       <div class="booking_options">
         <h4>Select a Time</h4>
         <div id="date_picker"></div>
+        <p id="book_disclaimer">* Select one or more days</p>
         <div id="time_picker"></div>
       </div>
 
@@ -43,6 +44,8 @@
   </div>
 
 </div>
+
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
 
 <script>
 
@@ -79,9 +82,29 @@
     var timeArea = $('#time_picker')
     timeArea.empty()
     $.each(datepicker.selectedDates, function(index, value) {
-      var timeOption = $('<div>').addClass('timeDis').text( formatDate(value) );
+      var timeOption = $('<div>').addClass('timeDis');
+      var dateP = $('<p>').addClass('date_text').text( formatDate(value) );
+      var dateShow = $('<div>').addClass('date_show').append(dateP)
+
+      var timeSelMenu = $('<select>', {name: 'time_select_' + index}).addClass('time_select')
+      var timeArr = ['6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', '9:00 PM']
+      timeArr.forEach(function(val) {
+        var timeOptMenu = $('<option>', {value: val}).text(val)
+        timeSelMenu.append(timeOptMenu)
+      });
+      var timeSelect = $('<div>').addClass('timeCol').append(timeSelMenu)
+
+      timeOption.append(dateShow).append(timeSelect)
       timeArea.append( timeOption );
+
     })
   }
+
+  function init() {
+    var input = document.getElementById('locationInput');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+  }
+
+  google.maps.event.addDomListener(window, 'load', init);
 
 </script>
