@@ -25,6 +25,7 @@ class StudentsController < ApplicationController
     lead.name = params[:name]
     lead.email = params[:email]
     lead.phone_number = params[:phone]
+    lead.campaign_id = params[:referred_by]
 
     if lead.save
       redirect_to action: 'lead_two', id: lead.id

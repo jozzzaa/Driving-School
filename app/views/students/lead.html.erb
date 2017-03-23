@@ -20,6 +20,7 @@
 
         <form action="/more-info-two" method="post">
           <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+          <input name="referred_by" value="<%= params[:referred_by] %>" type="hidden">
 
           <label for="name">Name</label>
           <input type="text" id="name" name="name">
