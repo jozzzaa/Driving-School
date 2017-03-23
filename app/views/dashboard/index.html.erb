@@ -72,7 +72,7 @@
           <% @leads.order("created_at DESC").each do |lead| %>
           <%
             cid = lead.campaign_id
-            campaign_display = @campaigns.find_by ref_code: "3H8xP"
+            campaign_display = @campaigns.find_by ref_code: cid
           %>
           <a href="/j42jvn590H23nfnuRVJNW/<%= lead.id %>">
             <ul class="panel_row">
@@ -81,7 +81,11 @@
               <li class="panel_item p_email"><%= lead.email %></li>
               <li class="panel_item p_phone"><%= lead.phone_number %></li>
               <li class="panel_item p_location"><%= lead.location %></li>
-              <li class="panel_item p_refer"><%= campaign_display.name %></li>
+              <% if campaign_display == nil %>
+                <li class="panel_item p_refer"></li>
+              <% else %>
+                <li class="panel_item p_refer"><%= campaign_display.name %></li>
+              <% end %>
             </ul>
           </a>
           <!-- <i class="fa fa-envelope-o" aria-hidden="true"></i> -->
