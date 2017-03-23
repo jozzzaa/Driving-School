@@ -13,6 +13,18 @@ class ApplicationController < ActionController::Base
     render :index
   end
 
+  def index_offer
+    @hey = 'offer'
+    @urlstring = params[:hash_token]
+    render :index
+  end
+
+  def index_share
+    @hey = 'share'
+    @urlstring = params[:hash_token]
+    render :index
+  end
+
   def lead
     render :lead
   end

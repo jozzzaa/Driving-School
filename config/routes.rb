@@ -16,6 +16,14 @@ Rails.application.routes.draw do
   # HomePage and Information
   get '/', to: 'application#index'
 
+  # Offer
+  get "/o/:hash_token" => "application#index_offer", as: "/"
+
+  # User Shares
+  get "/s/:hash_token" => "application#index_share", as: "/"
+
+
+
   # Student Onboarding and Leads
   get '/get-started', to: 'students#start'
   get '/thank-you', to: 'students#thanks'
