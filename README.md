@@ -44,3 +44,21 @@ rails generate resource Email subject:text body:text
 
 SMS
 rails generate resource SMS body:text
+
+
+~/WDI/projects/driving-school   master  rails c
+Running via Spring preloader in process 51615
+Loading development environment (Rails 5.0.0.1)
+[1] pry(main)> SecureRandom.urlsafe_base64(16)
+=> "vCSbge961qBasgbMGMAyDg"
+[2] pry(main)> SecureRandom.urlsafe_base64(16)
+=> "VV0y-mUv01IGsvx-TGeKtw"
+[3] pry(main)> SecureRandom.urlsafe_base64(16)
+=> "53Novy3AMLbk5htp_N066g"
+[4] pry(main)> SecureRandom.urlsafe_base64(5)
+=> "NYzuUa4"
+[5] pry(main)> SecureRandom.urlsafe_base64(5)
+=> "T7O3sjo"
+[6] pry(main)> SecureRandom.urlsafe_base64(5)
+=> "BB9FW0Q"
+[7] pry(main)>

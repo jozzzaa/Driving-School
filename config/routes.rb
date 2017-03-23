@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :campaigns
   resources :sms
   resources :emails
   resources :locations

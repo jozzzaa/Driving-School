@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170316110726) do
+ActiveRecord::Schema.define(version: 20170323163137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,16 @@ ActiveRecord::Schema.define(version: 20170316110726) do
     t.datetime "updated_at",       null: false
     t.index ["instructor_id"], name: "index_appointments_on_instructor_id", using: :btree
     t.index ["student_id"], name: "index_appointments_on_student_id", using: :btree
+  end
+
+  create_table "campaigns", force: :cascade do |t|
+    t.string   "ref_code"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["id"], name: "index_campaigns_on_id", using: :btree
+    t.index ["ref_code"], name: "index_campaigns_on_ref_code", using: :btree
   end
 
   create_table "emails", force: :cascade do |t|
@@ -63,9 +73,13 @@ ActiveRecord::Schema.define(version: 20170316110726) do
     t.string   "location"
     t.text     "hours_completed"
     t.text     "license_by"
-    t.string   "status"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.string   "campaign_id"
+    t.string   "share_token"
+    t.string   "referred_by"
+    t.integer  "status_id"
+    t.index ["campaign_id"], name: "index_leads_on_campaign_id", using: :btree
   end
 
   create_table "locations", force: :cascade do |t|
@@ -79,6 +93,13 @@ ActiveRecord::Schema.define(version: 20170316110726) do
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string   "status"
+    t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "students", force: :cascade do |t|
