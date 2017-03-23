@@ -4,6 +4,7 @@ class DashboardController < ApplicationController
 
   def index
     @leads = Lead.all
+    @campaigns = Campaign.all
 
     render :index
   end

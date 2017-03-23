@@ -65,11 +65,15 @@
           <li class="column_header p_location">Location</li>
           <!-- Algorithm that tracks percentage of form complete and other factors asigning a point system -->
           <!-- New Lead, Contacted, New Student, Assessment Lesson Etc -->
-          <li class="column_header p_status">Status</li>
+          <li class="column_header p_refer">Referred By</li>
         </ul>
       </div>
       <div class="panel_list">
           <% @leads.order("created_at DESC").each do |lead| %>
+          <%
+            cid = lead.campaign_id
+            campaign_display = @campaigns.find_by ref_code: "3H8xP"
+          %>
           <a href="/j42jvn590H23nfnuRVJNW/<%= lead.id %>">
             <ul class="panel_row">
               <li class="panel_item p_date"><%= lead.created_at.strftime("%b %d") %></li>
@@ -77,7 +81,7 @@
               <li class="panel_item p_email"><%= lead.email %></li>
               <li class="panel_item p_phone"><%= lead.phone_number %></li>
               <li class="panel_item p_location"><%= lead.location %></li>
-              <li class="panel_item p_status"></li>
+              <li class="panel_item p_refer"><%= campaign_display.name %></li>
             </ul>
           </a>
           <!-- <i class="fa fa-envelope-o" aria-hidden="true"></i> -->
