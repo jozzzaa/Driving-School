@@ -26,14 +26,14 @@ admin.save
 campaign1 = Campaign.new
 campaign1.name ="Win your P's - General Post"
 campaign1.description = ""
-campaign1.ref_code = "mUv01I"
+campaign1.ref_code = "3H8xP"
 campaign1.save
 
 #Retargeting Drivers
 campaign2 = Campaign.new
 campaign2.name = "Buy 5 Lessons, 6th Free - Retargeting"
 campaign2.description = ""
-campaign2.ref_code = "3H8xP"
+campaign2.ref_code = "mUv01I"
 campaign2.save
 
 # lead1 = Lead.new
