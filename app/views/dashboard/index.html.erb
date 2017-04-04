@@ -63,6 +63,7 @@
           <li class="column_header p_email">Email</li>
           <li class="column_header p_phone">Phone</li>
           <li class="column_header p_location">Location</li>
+          <li class="column_header p_location">Hours</li>
           <!-- Algorithm that tracks percentage of form complete and other factors asigning a point system -->
           <!-- New Lead, Contacted, New Student, Assessment Lesson Etc -->
           <li class="column_header p_refer">Referred By</li>
@@ -81,6 +82,7 @@
               <li class="panel_item p_email"><%= lead.email %></li>
               <li class="panel_item p_phone"><%= lead.phone_number %></li>
               <li class="panel_item p_location"><%= lead.location %></li>
+              <li class="panel_item p_location"><%= lead.hours_completed %></li>
               <% if campaign_display == nil %>
                 <li class="panel_item p_refer"></li>
               <% else %>
