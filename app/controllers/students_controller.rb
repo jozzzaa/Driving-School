@@ -1,3 +1,5 @@
+require 'pry'
+
 class StudentsController < ApplicationController
 
   def start
@@ -62,13 +64,19 @@ class StudentsController < ApplicationController
 
   end
 
-  def new
+  # def address
+  # end
+  #
+  # def new
+  #   $location = params[:location]
+  #   $postcode = params[:postcode]
+  #
+  #   render :booking
+  # end
+  #
+  # def thanks
+  #   render :thanks
+  # end
 
-    render :booking
-  end
-
-  def thanks
-    render :thanks
-  end
 
 end

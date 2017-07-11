@@ -1,50 +1,32 @@
-<!--
+<div class="booking_container">
+  <div class="booking_sidebar">
 
-<div class="option_container" id="booking_cont">
-
-  <div class="underlay" id="booking_underlay"></div>
-
-  <div class="booking_container">
-    <div class="booking_title">
-      <h3>- Start Driving -</h3>
-      <h2>Make a Booking</h2>
-    </div>
-    <div class="booking_content">
-      <div class="booking_inputs">
-        <h4>Booking Details</h4>
-        <label for="name">Name</label>
-        <input type="text" id="name" name="name">
-        <label for="email">Email / Phone</label>
-        <input type="email" id="contact" name="contact" >
-        <label for="phone">Location</label>
-        <input type="text" id="locationInput" name="location" value="<%= $location %>">
-        <label for="transmission">Transmission (Manual / Automatic)</label>
-        <div class="transmission_select">
-          <select name="transmission" id="transmission">
-            <option value="no_pref" selected="selected">No Preference</option>
-            <option value="automatic">Automatic</option>
-            <option value="manual">Manual</option>
-          </select>
-          <div class="drop_icon">
-            <i class="fa fa-caret-down" aria-hidden="true"></i>
-          </div>
-        </div>
-      </div>
-      <div class="booking_options">
-        <h4>Select a Time</h4>
-        <div id="date_picker"></div>
-        <p id="book_disclaimer">* Select one or more days</p>
-        <div id="time_picker"></div>
-      </div>
-
-    </div>
-    <div class="booking_summary">
-      <a href="/thank-you">
-        <button id="book_btn">Book Now</button>
-      </a>
-    </div>
   </div>
+  <div class="booking_content">
 
+    <p>date and time picker</p>
+    <p><%= $location %></p>
+    <p><%= $postcode %></p>
+
+    <div class="booking_options">
+      <h4>Select a Time</h4>
+      <div id="date_picker"></div>
+      <p id="book_disclaimer">* Select one or more days</p>
+      <div id="time_picker">
+        <p>Location</p>
+        <input type="text">
+        <p>Postcode</p>
+        <input type="text">
+        <p>Date</p>
+        <input type="text">
+        <p>Time</p>
+        <input type="text">
+        <button>Next</button>
+      </div>
+    </div>
+
+
+  </div>
 </div>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy__cMEKBcPStq3wd-NQo8WFHqdQ9nApY&v=3.exp&sensor=false&libraries=places"></script>
@@ -62,6 +44,7 @@
   datepicker.container = document.querySelector('#date_picker');
   datepicker.inline = true;
   datepicker.today = false;
+  datepicker.maxSelections = 1;
   datepicker.show();
 
   function formatDate(date) {
@@ -109,4 +92,4 @@
 
   google.maps.event.addDomListener(window, 'load', init);
 
-</script> -->
+</script>

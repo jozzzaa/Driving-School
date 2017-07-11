@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   # resources :students
   # resources :leads
   resources :subscriptions
+  resources :charges
 
   namespace :api do
     resources :leads
@@ -23,6 +24,17 @@ Rails.application.routes.draw do
   # User Shares
   get "/s/:hash_token" => "application#index_share", as: "/"
 
+  # Booking
+  get '/booking-address', to: 'booking#address'
+  get '/booking-time', to: 'booking#time'
+  post '/booking-time', to: 'booking#time'
+  get '/booking-confirmation', to: 'booking#thanks'
+
+  # get '/booking-time', to: 'students#new'
+  # post '/booking-time', to: 'students#new'
+  # get 'booking-details', to: 'students#thanks'
+  # get '/booking-confirmation', to: 'booksings#thanks'
+
 
 
   # Student Onboarding and Leads
@@ -31,7 +43,7 @@ Rails.application.routes.draw do
   get '/more-info', to: 'students#lead'
   get '/more-info-two', to: 'students#lead_two'
   get '/more-info-three', to: 'students#lead_three'
-  get '/booking', to: 'students#new'
+  # get '/booking', to: 'students#new'
 
   # Lead form
   post '/more-info-two', to: 'students#stage_one'
