@@ -42,7 +42,9 @@
         </article>
 
         <!-- Hidden Inputs -->
-        <% $price %>
+        <input type="hidden" value="<%= $price %>" name="price">
+        <input type="hidden" value="<%= $location %>" name="address">
+        <input type="hidden" value="<%= $postcode %>" name="postcode">
 
         <p>Payment Details</p>
         <div id="card-element">

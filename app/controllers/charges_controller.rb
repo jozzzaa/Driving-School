@@ -25,12 +25,29 @@ class ChargesController < ApplicationController
   end
 
   def create
+
+    customer_name = params[:name]
+    customer_email = params[:email]
+    customer_phone = params[:phone]
+    customer_address = params[:address]
+    customer_postcode = params[:postcode]
+    customer_price = params[:price]
+
+    customer_metadata = {
+      'name' => customer_name,
+      'email' => customer_email,
+      'phone' => customer_phone,
+      'address' => customer_address,
+      'postcode' => customer_postcode,
+    }
+
     # Amount in cents
-    @amount = 500
+    @amount = customer_price.to_i
 
     customer = Stripe::Customer.create(
-      :email => params[:stripeEmail],
-      :source  => params[:stripeToken]
+      :email => customer_email,
+      :source  => params[:stripeToken],
+      :metadata => customer_metadata,
     )
 
     charge = Stripe::Charge.create(

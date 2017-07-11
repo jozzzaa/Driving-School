@@ -210,7 +210,7 @@
 
       .confirm_left {
         text-align: left;
-        width: 70%;
+        width: 80%;
         display: inline-block;
         vertical-align: top;
 
@@ -234,9 +234,32 @@
         margin-left: 20px;
       }
 
+      #dollar_sign {
+        vertical-align: top;
+        font-weight: 600;
+        display: inline-block;
+        padding: 0;
+        margin: 15px 0px;
+        color: rgb(94, 94, 94);
+        font-style: italic;
+
+      }
+
+      #confirm_price {
+        vertical-align: top;
+        font-weight: 700;
+        font-size: 2em;
+        display: inline-block;
+        padding: 0;
+        margin: 8px 0px;
+        color: rgb(94, 94, 94);
+        font-style: italic;
+
+      }
+
       .confirm_right {
         text-align: left;
-        width: 28%;
+        width: 18%;
         display: inline-block;
         vertical-align: top;
       }
@@ -256,4 +279,84 @@
   background: url('http://www.paramountdriving.com/img/instruction.jpg') no-repeat;
   background-size: cover;
   z-index: 1;
+}
+
+.option_container {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  background: url('/images/bg_pattern.svg') repeat;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .underlay {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    background: -webkit-linear-gradient(left, #2ecc71 , #3498db);
+    background: -o-linear-gradient(right, #2ecc71, #3498db);
+    background: -moz-linear-gradient(right, #2ecc71, #3498db);
+    background: linear-gradient(to right, #2ecc71 , #3498db);
+    z-index: 2;
+    opacity: 0.9;
+  }
+
+
+  .thanks-container {
+    width: 500px;
+    // height: 500px;
+    background-color: #2ecc71;
+    z-index: 5;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 10px;
+    -webkit-box-shadow: 0px 0px 25px -2px rgba(0,0,0,0.3);
+    -moz-box-shadow: 0px 0px 25px -2px rgba(0,0,0,0.3);
+    box-shadow: 0px 0px 25px -2px rgba(0,0,0,0.3);
+    padding: 4em;
+
+    img {
+      width: 150px;
+      opacity: 0.7;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      margin-bottom: 0;
+      text-align: center;
+    }
+
+    p {
+      width: 100%;
+      text-align: center;
+      margin-top: 0;
+      color: rgb(70, 70, 70);
+    }
+
+    button {
+      border-radius: 5px;
+      background-color: #fff;
+      color: #2ecc71;
+      border: 0;
+      padding: 15px 35px 15px 35px;
+      font-size: 1em;
+      cursor: pointer;
+      transition: 0.3s;
+
+      &:hover {
+        background-color: #f4f4f4;
+      }
+    }
+
+  }
+
+
 }
