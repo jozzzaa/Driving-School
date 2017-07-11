@@ -1,89 +1,131 @@
+<style>
+  #marker {
+    background-image: url('http://icons.iconarchive.com/icons/paomedia/small-n-flat/1024/map-marker-icon.png');
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    margin-top: -35px;
+    margin-left: -25px;
+  }
+</style>
+
 <div class="booking_container">
   <div class="booking_sidebar">
 
   </div>
   <div class="booking_content">
 
-    <form action="/booking-time" method="post">
-      <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
-      <div id="locationField">
-        <input id="autocomplete" placeholder="Enter your address"
-               onFocus="geolocate()" type="text"></input>
-      </div>
-      <input type="hidden" name="location" id="location_field">
-      <input type="hidden" name="postcode" id="postcode_field">
-      <button>Next</button>
-    </form>
+    <div id='map'></div>
+
+    <div class="address_container">
+      <h3>Find your Location</h3>
+      <form action="/booking-time" method="post">
+        <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
+        <div id="locationField">
+          <input id="autocomplete" placeholder="Enter your address"
+          onFocus="geolocate()" type="text"></input>
+        </div>
+        <input type="hidden" name="location" id="location_field" required>
+        <input type="hidden" name="postcode" id="postcode_field" required>
+        <button>Next</button>
+      </form>
+    </div>
+
 
   </div>
 </div>
 
+<script>
+  // Mapbox
+  mapboxgl.accessToken = 'pk.eyJ1Ijoiam96enphYSIsImEiOiJjajR6aHptbWQwNHJiMnFvN3V5YmlnMTQ2In0.E9maWrwgS9JW8v-3NKP2Lw';
+  var map = new mapboxgl.Map({
+    container: 'map', // container id
+    style: 'mapbox://styles/mapbox/streets-v9',
+    center: [133.6631636, -28.4421561],
+    zoom: 4
+  });
 
-  <script>
+  function flyToAddress(lat, lng) {
 
-    var placeSearch, autocomplete;
-    var componentForm = {
-      street_number: 'short_name',
-      route: 'long_name',
-      locality: 'long_name',
-      administrative_area_level_1: 'short_name',
-      country: 'long_name',
-      postal_code: 'short_name'
-    };
-    var input = document.getElementById('autocomplete');
-    var options = {
-      componentRestrictions: {country: 'au'}
-    };
-
-    function hiddenFields() {
-      var place = autocomplete.getPlace();
-      var locationAuto = place.formatted_address;
-      var postcodeAuto = place.address_components[6].long_name;
-      var locationField = $('#location_field')
-      var postcodeField = $('#postcode_field')
-      locationField.val(locationAuto)
-      postcodeField.val(postcodeAuto)
-    }
-
-    function initAutocomplete() {
-      autocomplete = new google.maps.places.Autocomplete(input, options);
-      autocomplete.addListener('place_changed', hiddenFields);
-    }
-
-    // function fillInAddress() {
-    //   var place = autocomplete.getPlace();
-    //
-    //   for (var component in componentForm) {
-    //     document.getElementById(component).value = '';
-    //     document.getElementById(component).disabled = false;
-    //   }
-    //
-    //   // for (var i = 0; i < place.address_components.length; i++) {
-    //   //   var addressType = place.address_components[i].types[0];
-    //   //   if (componentForm[addressType]) {
-    //   //     var val = place.address_components[i][componentForm[addressType]];
-    //   //     document.getElementById(addressType).value = val;
-    //   //   }
-    //   // }
-    // }
-
-    function geolocate() {
-      if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          var geolocation = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          var circle = new google.maps.Circle({
-            center: geolocation,
-            radius: position.coords.accuracy
-          });
-          autocomplete.setBounds(circle.getBounds());
-        });
+    var location = {
+      'address': {
+        duration: 6000,
+        center: [lng, lat],
+        pitch: 0,
+        bearing: -20,
+        zoom: 15,
+        pitch: 25
       }
-    }
-  </script>
+    };
 
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkP5lEsBEXbAGW8YjSF17_OpaEIcy2g5M&libraries=places&callback=initAutocomplete"
-      async defer>
-  </script>
+    map.flyTo( location.address );
+
+    $('.address_container').animate({ 'marginTop': '40%' }, 4000, function() {
+      setTimeout(function(){
+        var el = document.createElement('div');
+        el.id = 'marker';
+        new mapboxgl.Marker(el)
+        .setLngLat([lng, lat])
+        .addTo(map);
+      }, 2000);
+    });
+
+
+  };
+
+</script>
+
+<script>
+
+  var placeSearch, autocomplete;
+  var componentForm = {
+    street_number: 'short_name',
+    route: 'long_name',
+    locality: 'long_name',
+    administrative_area_level_1: 'short_name',
+    country: 'long_name',
+    postal_code: 'short_name'
+  };
+  var input = document.getElementById('autocomplete');
+  var options = {
+    componentRestrictions: {country: 'au'}
+  };
+
+  function hiddenFields() {
+    var place = autocomplete.getPlace();
+    var locationAuto = place.formatted_address;
+    var postcodeAuto = place.address_components[6].long_name;
+    var locationField = $('#location_field')
+    var postcodeField = $('#postcode_field')
+    locationField.val(locationAuto)
+    postcodeField.val(postcodeAuto)
+    flyToAddress(place.geometry.location.lat(), place.geometry.location.lng())
+    // margin top of address 50%
+  }
+
+  function initAutocomplete() {
+    autocomplete = new google.maps.places.Autocomplete(input, options);
+    autocomplete.addListener('place_changed', hiddenFields);
+  }
+
+  function geolocate() {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position) {
+        var geolocation = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        var circle = new google.maps.Circle({
+          center: geolocation,
+          radius: position.coords.accuracy
+        });
+        autocomplete.setBounds(circle.getBounds());
+      });
+    }
+  }
+
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkP5lEsBEXbAGW8YjSF17_OpaEIcy2g5M&libraries=places&callback=initAutocomplete"
+    async defer>
+</script>

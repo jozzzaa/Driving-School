@@ -4,27 +4,30 @@
   </div>
   <div class="booking_content">
 
-    <p>date and time picker</p>
-    <p><%= $location %></p>
-    <p><%= $postcode %></p>
+    <div id="booking_bg"></div>
 
-    <div class="booking_options">
-      <h4>Select a Time</h4>
-      <div id="date_picker"></div>
-      <p id="book_disclaimer">* Select one or more days</p>
-      <div id="time_picker">
-        <p>Location</p>
-        <input type="text">
-        <p>Postcode</p>
-        <input type="text">
-        <p>Date</p>
-        <input type="text">
-        <p>Time</p>
-        <input type="text">
-        <button>Next</button>
+    <div class="date_holder">
+
+      <div class="time_picker">
+        <h3>Select a Time</h3>
+        <div id="date_picker"></div>
       </div>
-    </div>
 
+      <div class="time_details">
+        <form action="">
+          <p>Location</p>
+          <input type="text" value="<%= $location %>">
+          <p>Postcode</p>
+          <input type="text" value="<%= $postcode %>">
+          <p>Date</p>
+          <input type="text" id="date_input">
+          <p>Time</p>
+          <input type="text">
+          <button>Next</button>
+        </form>
+      </div>
+
+    </div>
 
   </div>
 </div>
