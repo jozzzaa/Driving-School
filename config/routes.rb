@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   get '/booking-address', to: 'booking#address'
   get '/booking-time', to: 'booking#time'
   post '/booking-time', to: 'booking#time'
+  post '/charges/new', to: 'charges#new'
   get '/booking-confirmation', to: 'booking#thanks'
 
   # get '/booking-time', to: 'students#new'

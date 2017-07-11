@@ -32,8 +32,6 @@ gem 'pry-rails'
 gem 'rb-readline', '~> 0.5.3'
 gem 'mail', '~> 2.6', '>= 2.6.4'
 
-
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

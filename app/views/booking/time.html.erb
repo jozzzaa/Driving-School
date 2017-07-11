@@ -14,15 +14,16 @@
       </div>
 
       <div class="time_details">
-        <form action="/booking-time" method="post">
+        <form action="/charges/new" method="post">
+          <input name="authenticity_token" value="<%= form_authenticity_token %>" type="hidden">
           <p>Location</p>
-          <input type="text" value="<%= $location %>">
+          <input type="text" value="<%= $location %>" name="location">
           <p>Postcode</p>
-          <input type="text" value="<%= $postcode %>">
+          <input type="text" value="<%= $postcode %>" name="postcode">
           <p>Date</p>
-          <input type="text" id="date_input">
+          <input type="text" id="date_input" name="date">
           <p>Time</p>
-          <input type="text">
+          <input type="text" name="time">
           <button>Next</button>
         </form>
       </div>
