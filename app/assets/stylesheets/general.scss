@@ -100,13 +100,15 @@ header {
   background-position: 54% 46%;
   min-width: 100%;
   min-height: 100%;
-  background-color: #171717;
-  background: #30588f; /* Old browsers */
-  background: -moz-radial-gradient(center, ellipse cover, #30588f 0%, #1c3352 100%); /* FF3.6-15 */
-  background: -webkit-radial-gradient(center, ellipse cover, #30588f 0%,#1c3352 100%); /* Chrome10-25,Safari5.1-6 */
-  background: radial-gradient(ellipse at center, #30588f 0%,#1c3352 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30588f', endColorstr='#1c3352',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-  // 253e61
+  background: url('home_page.jpg') no-repeat;
+  background-size: cover;
+  // background-color: #171717;
+  // background: #30588f; /* Old browsers */
+  // background: -moz-radial-gradient(center, ellipse cover, #30588f 0%, #1c3352 100%); /* FF3.6-15 */
+  // background: -webkit-radial-gradient(center, ellipse cover, #30588f 0%,#1c3352 100%); /* Chrome10-25,Safari5.1-6 */
+  // background: radial-gradient(ellipse at center, #30588f 0%,#1c3352 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#30588f', endColorstr='#1c3352',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  // // 253e61
 
   #triangle_pattern {
     position: absolute;
@@ -271,6 +273,11 @@ header {
       position: relative;
       // white-space: nowrap;
       padding-top: 140px;
+      background-color: rgba(#000, 0.4);
+      -webkit-box-shadow: 0px 0px 99px 70px rgba(0,0,0,0.4);
+      -moz-box-shadow: 0px 0px 99px 70px rgba(0,0,0,0.4);
+      box-shadow: 0px 0px 99px 70px rgba(0,0,0,0.4);
+      border-radius: 40px;
 
     }
 
