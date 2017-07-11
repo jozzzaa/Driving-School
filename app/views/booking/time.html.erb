@@ -9,12 +9,12 @@
     <div class="date_holder">
 
       <div class="time_picker">
-        <h3>Select a Time</h3>
+        <h3>Select a Date</h3>
         <div id="date_picker"></div>
       </div>
 
       <div class="time_details">
-        <form action="">
+        <form action="/booking-time" method="post">
           <p>Location</p>
           <input type="text" value="<%= $location %>">
           <p>Postcode</p>
@@ -48,6 +48,7 @@
   datepicker.inline = true;
   datepicker.today = false;
   datepicker.maxSelections = 1;
+  datepicker.today = true;
   datepicker.show();
 
   function formatDate(date) {
@@ -85,7 +86,9 @@
       timeOption.append(dateShow).append(timeSelect)
       timeArea.append( timeOption );
 
+      $('#date_input').val(dateP[0].innerHTML)
     })
+
   }
 
   function init() {
